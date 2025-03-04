@@ -30,10 +30,11 @@ export class AuthService {
     );
   }
 
-  Register(username: string, password: string, onRegister: (ok: boolean) => void){
+  Register(user: any, onRegister: (ok: boolean) => void){
     const params = new HttpParams()
-      .set('email', username)
-      .set('password', password);
+      .set('name', user.name)
+      .set('email', user.email)
+      .set('password', user.password);
 
     this.http.post(`${this.apiHabitosAuthUrl}/register`, params).subscribe((users :any) => {
         if(users){
@@ -41,7 +42,7 @@ export class AuthService {
         }
       },
       (error) => {
-        if(error.status === 404){
+        if(error.status === 400){
           onRegister(false)
         }
       }
