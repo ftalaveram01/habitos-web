@@ -23,7 +23,7 @@ export class LoginComponent {
   onSubmit() {
     this.authService.Login(this.email, this.password, (ok: boolean, user?:any) => {
       if(ok){
-        console.log(user);
+        console.log(user.password);
         this.localStorage.setItem('user', user);
         alert('Login successful');
       } else {
