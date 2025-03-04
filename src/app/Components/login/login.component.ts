@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../Services/auth-service.service';
+import { AuthService } from '../../Services/auth.service';
 import { LocalStorageService } from '../../Services/localstorage.service';
 import { Router } from '@angular/router';
 

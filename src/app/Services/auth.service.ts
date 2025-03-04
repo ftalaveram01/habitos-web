@@ -29,4 +29,22 @@ export class AuthService {
       }
     );
   }
+
+  Register(username: string, password: string, onRegister: (ok: boolean) => void){
+    const params = new HttpParams()
+      .set('email', username)
+      .set('password', password);
+
+    this.http.post(`${this.apiHabitosAuthUrl}/register`, params).subscribe((users :any) => {
+        if(users){
+          onRegister(true)
+        }
+      },
+      (error) => {
+        if(error.status === 404){
+          onRegister(false)
+        }
+      }
+    );
+  }
 }
