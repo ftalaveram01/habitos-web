@@ -25,7 +25,7 @@ export class LoginComponent {
       if(ok){
         console.log(user.password);
         this.localStorage.setItem('user', user);
-        alert('Login successful');
+        this.router.navigate(['/inicio']);
       } else {
         alert('Invalid username or password');
       }
