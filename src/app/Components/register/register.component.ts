@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,16 +14,16 @@ export class RegisterComponent {
 
   form !: FormGroup;
   name: string = '';
-  errors: { [nameError: string]: string} = {};
+  errors: { [nameError: string]: string } = {};
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {}
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.form = this.fb.group({
       name: ['', Validators.required, Validators.minLength(1), Validators.maxLength(30)],
-      email: ['',Validators.required, this.emailValidator],
+      email: ['', Validators.required, this.emailValidator],
       password: ['', Validators.required],
-      confirmPassword: ['',Validators.required]
+      confirmPassword: ['', Validators.required]
     }, {
       validators: this.passwordMatchValidator
     })
@@ -30,8 +31,9 @@ export class RegisterComponent {
 
   onSubmit() {
     this.authService.Register(this.form.value, (ok: boolean) => {
-      if(ok){
+      if (ok) {
         alert('Registration successful');
+        this.router.navigate(['/login']);
       } else {
         alert('Registration failed');
       }
@@ -46,10 +48,10 @@ export class RegisterComponent {
     return null;
   }
 
-  passwordMatchValidator(formGroup: FormGroup) : void{
+  passwordMatchValidator(formGroup: FormGroup): void {
     const password = formGroup.get('password')?.value;
     const confirmPassword = formGroup.get('confirmPassword')?.value;
-  
+
     if (password !== confirmPassword) {
       formGroup.get('confirmPassword')?.setErrors({ noMatch: true });
     } else {

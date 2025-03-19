@@ -16,16 +16,16 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private localStorage: LocalStorageService, private authService: AuthService, private router: Router) {}
+  constructor(private localStorage: LocalStorageService, private authService: AuthService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onSubmit() {
-    this.authService.Login(this.email, this.password, (ok: boolean, user?:any) => {
-      if(ok){
+    this.authService.Login(this.email, this.password, (ok: boolean, user?: any) => {
+      if (ok) {
         console.log(user.password);
         this.localStorage.setItem('user', user);
-        this.router.navigate(['/inicio']);
+        this.router.navigate(['/home']);
       } else {
         alert('Invalid username or password');
       }
