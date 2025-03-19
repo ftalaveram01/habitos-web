@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  apiHabitosAuthUrl = 'http://localhost:8080/rest/usuarios';  
+  apiHabitosAuthUrl = 'http://localhost:8080/rest/usuarios';
 
   constructor(private http: HttpClient) { }
 
@@ -23,8 +22,29 @@ export class AuthService {
         }
       },
       (error) => {
-        if(error.status === 400){
+        if(error.status === 404){
           onLogin(false, undefined)
+        }
+      }
+    );
+  }
+
+  Register(user: any, onRegister: (ok: boolean) => void){
+
+    const usuario = {
+      nombre: user.name,
+      email: user.email,
+      password: user.password
+    }
+
+    this.http.post(`${this.apiHabitosAuthUrl}/register`, usuario).subscribe((users :any) => {
+        if(users){
+          onRegister(true)
+        }
+      },
+      (error) => {
+        if(error.status === 400){
+          onRegister(false)
         }
       }
     );

@@ -1,0 +1,35 @@
+<div class="container">
+    <form class="form-group" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label>
+            Name:
+            <input type="text" formControlName="name" name="name" required>
+        </label>
+        <label>
+            Email:
+            <input type="email" formControlName="email" name="email" required>
+            <div *ngIf="email?.invalid && email?.touched" class="error">
+                El correo electrónico no es válido.
+            </div>
+        </label>
+        <label>
+            Password:
+            <input type="password" formControlName="password" name="password" required>
+        </label>
+        <label>
+            Confirm password:
+            <input type="password" formControlName="confirmPassword" name="confirmPassword" required>
+            <div *ngIf="confirmPassword?.hasError('noMatch') && confirmPassword?.touched" class="error">
+                Las contraseñas no coinciden.
+            </div>
+        </label>
+        <button type="submit">Register</button>
+        
+        <a href="http://localhost:4200/login" id="login">
+            <p>
+                ¿Ya tienes cuenta? Inicia sesión
+            </p>
+        </a>
+        
+    </form>
+</div>
+

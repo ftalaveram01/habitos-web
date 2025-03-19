@@ -1,0 +1,55 @@
+:host {
+    display: block;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.desktop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #FFFFFF;
+}
+
+.titulo {
+    font-size: 6vh;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+.botones {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+button {
+    font-size: 1.5em;
+    min-width: 200px;
+    width: auto;
+    padding: 20px 30px;
+    margin: 0 10px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: #F88E25;
+    color: #FFFFFF;
+    cursor: pointer;
+}

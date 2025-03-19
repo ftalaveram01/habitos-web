@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../Services/auth-service.service';
+import { AuthService } from '../../Services/auth.service';
 import { LocalStorageService } from '../../Services/localstorage.service';
 import { Router } from '@angular/router';
 
@@ -16,16 +16,16 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private localStorage: LocalStorageService, private authService: AuthService, private router: Router) {}
+  constructor(private localStorage: LocalStorageService, private authService: AuthService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onSubmit() {
-    this.authService.Login(this.email, this.password, (ok: boolean, user?:any) => {
-      if(ok){
-        console.log(user);
+    this.authService.Login(this.email, this.password, (ok: boolean, user?: any) => {
+      if (ok) {
+        console.log(user.password);
         this.localStorage.setItem('user', user);
-        alert('Login successful');
+        this.router.navigate(['/home']);
       } else {
         alert('Invalid username or password');
       }
