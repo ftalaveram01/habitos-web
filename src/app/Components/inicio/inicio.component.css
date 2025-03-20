@@ -6,63 +6,25 @@
     width: 100vw;
 }
 
-.desktop {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
+.container {
+    opacity: 0;
+    animation: simpleFadeIn 250ms ease-in 200ms forwards;
 }
 
-.mobile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
-
-.mobile>.titulo {
-    width: 90dvw;
-    font-size: 3em;
-    text-align: center;
-}
-
-.mobile>.botones {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    width: 90dvw;
-
-
-    button {
-        margin: 0;
-        border-radius: 50px;
-        width: 100%;
+@keyframes simpleFadeIn {
+    from {
+        opacity: 0;
     }
 
-    #login-button {
-        margin-bottom: 10px;
+    to {
+        opacity: 1;
     }
-
 }
 
-.titulo {
-    font-size: 6vh;
-    color: #000000;
-    margin: 0;
-    padding: 0;
-}
-
-.botones {
+.container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 20px;
+    height: 100vh;
+    width: 100vw;
 }
 
 button {
@@ -78,7 +40,74 @@ button {
     cursor: pointer;
 }
 
+/* Estilos para desktop (media queries) */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container>.titulo>h1 {
+        font-size: 2em;
+    }
+
+    .container>.botones {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 90dvw;
+        gap: 20px;
+    }
+
+    button {
+        min-width: 200px;
+    }
+}
+
+/* Estilos para mobile (media queries) */
+@media (max-width: 767px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        width: 90dvw;
+    }
+
+    button {
+        margin: 0;
+        border-radius: 50px;
+        width: 100%;
+    }
+
+    #login-button {
+        margin-bottom: 10px;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.container>.titulo {
+    width: 90dvw;
+    font-size: 3em;
+    text-align: center;
+}
+
+.titulo {
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
 button:hover {
-    transition: 400ms;
-    background-color: #000000;
+    transition: 300ms;
+    background-color: #5C4E35;
 }
