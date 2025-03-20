@@ -4,22 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
 import { LocalStorageService } from '../../Services/localstorage.service';
 import { Router } from '@angular/router';
-import { trigger, transition, animate, style } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
-  animations: [
-    trigger('slideIn', [
-      transition(':enter', [
-        style({ transform: 'translateX(100%)' }),
-        animate('300ms ease-in', style({ transform: 'translateX(0)' }))
-      ])
-    ])
-  ]
+  styleUrl: './login.component.css'
 })
 export class LoginComponent {
   email: string = '';
