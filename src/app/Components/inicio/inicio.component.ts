@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { trigger, transition, animate, style } from '@angular/animations';
+import { trigger, transition, animate, style, state } from '@angular/animations';
 
 @Component({
   selector: 'app-inicio',
@@ -12,9 +12,10 @@ import { trigger, transition, animate, style } from '@angular/animations';
   styleUrl: './inicio.component.css',
   animations: [
     trigger('fadeIn', [
+      state('void', style({ opacity: 0, visibility: 'hidden' })),
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('500ms 100ms', style({ opacity: 1 }))
+        animate('500ms 100ms', style({ opacity: 1, visibility: 'visible' }))
       ]),
       transition(':leave', [
         animate('500ms', style({ opacity: 0 }))
@@ -25,6 +26,7 @@ import { trigger, transition, animate, style } from '@angular/animations';
 export class InicioComponent {
 
   isMobile: boolean = false;
+  isReady: boolean = false;
 
   constructor(private router: Router, private breakpointObserver: BreakpointObserver) {
     this.breakpointObserver.observe([
@@ -36,7 +38,9 @@ export class InicioComponent {
     );
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.isReady = true;
+  }
 
   irALogin() {
     this.router.navigate(['/login']);
