@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" @slideIn>
     <form class="form-group" (ngSubmit)="onSubmit()">
         <label>
             Email:
@@ -9,12 +9,12 @@
             <input type="password" [(ngModel)]="password" name="password" required>
         </label>
         <button type="submit">Login</button>
-        
+
         <a href="http://localhost:4200/register" id="registrar">
             <p>
                 ¿No tienes cuenta? Registrate
             </p>
         </a>
-        
+
     </form>
 </div>
