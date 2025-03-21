@@ -6,7 +6,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class AuthService {
 
-  apiHabitosAuthUrl = 'http://localhost:8080/usuarios';
+  apiHabitosAuthUrl = 'http://localhost:3000/usuarios';
 
   constructor(private http: HttpClient) { }
 
