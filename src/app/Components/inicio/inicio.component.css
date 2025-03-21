@@ -119,3 +119,8 @@ button:not(:hover) {
     background-color: #F88E25;
     transform: scale(1);
 }
+
+h1{
+    margin: 0;
+    margin-bottom: 10px;
+}
