@@ -96,11 +96,16 @@
     }
 }
 
+label {
+    user-select: none;
+}
+
 .container>.titulo {
     width: 90dvw;
     font-size: 3em;
     text-align: center;
     padding-top: 0;
+    user-select: none;
 }
 
 button:hover {
