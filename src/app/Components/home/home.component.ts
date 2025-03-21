@@ -1,11 +1,22 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { MishabitosComponent } from '../mishabitos/mishabitos.component';
+import { RecomendadosComponent } from '../recomendados/recomendados.component';
+import { LogrosComponent } from '../logros/logros.component';
+import { PerfilComponent } from '../perfil/perfil.component';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, MishabitosComponent, RecomendadosComponent, LogrosComponent, PerfilComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  activeSection: string = 'mishabitos'; // Sección activa por defecto
 
+
+  showSection(section: string) {
+    this.activeSection = section;
+  }
 }

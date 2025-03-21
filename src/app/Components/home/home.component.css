@@ -1,0 +1,12 @@
+.active {
+    color: #F88E25;
+}
+
+a {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #F88E25;
+}
