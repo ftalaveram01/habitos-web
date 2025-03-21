@@ -1,35 +1,31 @@
 <div class="container">
-    <form class="form-group" [formGroup]="form" (ngSubmit)="onSubmit()">
-        <label>
-            Name:
-            <input type="text" formControlName="name" name="name" required>
-        </label>
-        <label>
-            Email:
-            <input type="email" formControlName="email" name="email" required>
-            <div *ngIf="email?.invalid && email?.touched" class="error">
-                El correo electrónico no es válido.
-            </div>
-        </label>
-        <label>
-            Password:
-            <input type="password" formControlName="password" name="password" required>
-        </label>
-        <label>
-            Confirm password:
-            <input type="password" formControlName="confirmPassword" name="confirmPassword" required>
-            <div *ngIf="confirmPassword?.hasError('noMatch') && confirmPassword?.touched" class="error">
-                Las contraseñas no coinciden.
-            </div>
-        </label>
-        <button type="submit">Register</button>
-        
-        <a href="http://localhost:4200/login" id="login">
-            <p>
-                ¿Ya tienes cuenta? Inicia sesión
-            </p>
-        </a>
-        
-    </form>
-</div>
 
+    <section class="titulo">
+        <h1>HABBBITS</h1>
+    </section>
+
+    <form class="form-group" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" name="email" required>
+        <div *ngIf="email?.invalid && email?.touched" class="error">
+            El correo electrónico no es válido.
+        </div>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" name="password" required>
+
+        <label for="confirmPassword">Confirm password</label>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" name="confirmPassword" required>
+        <div *ngIf="confirmPassword?.hasError('noMatch') && confirmPassword?.touched" class="error">
+            Las contraseñas no coinciden.
+        </div>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+</div>
