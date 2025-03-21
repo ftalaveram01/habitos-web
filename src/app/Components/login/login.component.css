@@ -27,6 +27,7 @@
     .form-group {
         min-width: 200px;
         width: 50dvw;
+        max-width: 500px;
     }
 
     label {
@@ -50,8 +51,10 @@
     }
 
     button {
-        margin-top: 10px;
+        margin-top: 20px;
+        font-size: 1.5em;
         background-color: #F88E25;
+        color: #FFFFFF;
         cursor: pointer;
     }
 }
