@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="150">
+  <!-- Letra "b" en orientación normal -->
+  <text x="60" y="100" fill="white" stroke="black" stroke-width="2"
+        font-size="100" font-family="Cascadia Mono, monospace"
+        text-anchor="middle" dominant-baseline="text-after-edge">
+    b
+  </text>
+  
+  <!-- Letra "q" trasladada hacia arriba para alinear su base (la parte inferior del palo) 
+       con la base de la "b". Ajusta el valor de la traslación según necesites. -->
+  <g transform="translate(120, -10)">
+    <text x="120" y="100" fill="white" stroke="black" stroke-width="2"
+          font-size="100" font-family="Cascadia Mono, monospace"
+          text-anchor="middle" dominant-baseline="text-after-edge">
+      q
+    </text>
+  </g>
+  
+  <!-- Letra "B" en orientación normal -->
+  <text x="180" y="100" fill="white" stroke="black" stroke-width="2"
+        font-size="100" font-family="Cascadia Mono, monospace"
+        text-anchor="middle" dominant-baseline="text-after-edge">
+    B
+  </text>
+</svg>
