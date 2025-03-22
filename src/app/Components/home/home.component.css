@@ -1,5 +1,5 @@
 .active {
-    color: #5C4E35;
+    color: #FDFDCB;
 }
 
 a {
@@ -8,11 +8,12 @@ a {
 }
 
 a:hover {
-    color: #5C4E35;
+    color: #FDFDCB;
 }
 
 nav {
     position: fixed;
+    top: 0;
     height: auto;
     width: 60%;
     min-width: 500px;
@@ -20,6 +21,7 @@ nav {
     margin-right: 20%;
     margin-top: 10px;
     align-items: center;
+    justify-content: center;
     background-color: #5C4E35;
     border-radius: 50px;
     box-shadow: 0 0 15px #000000;
@@ -57,4 +59,13 @@ li {
 #logo {
     background: none;
     box-shadow: none;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    height: fit-content;
+    width: 99vw;
 }
