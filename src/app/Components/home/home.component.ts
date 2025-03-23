@@ -4,6 +4,7 @@ import { MishabitosComponent } from '../mishabitos/mishabitos.component';
 import { RecomendadosComponent } from '../recomendados/recomendados.component';
 import { LogrosComponent } from '../logros/logros.component';
 import { PerfilComponent } from '../perfil/perfil.component';
+import { AuthService } from '../../Services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -15,8 +16,13 @@ import { PerfilComponent } from '../perfil/perfil.component';
 export class HomeComponent {
   activeSection: string = 'mishabitos'; // Sección activa por defecto
 
+  constructor(private authService: AuthService) { }
 
   showSection(section: string) {
     this.activeSection = section;
+  }
+
+  btnLogout() {
+    this.authService.Logout();
   }
 }

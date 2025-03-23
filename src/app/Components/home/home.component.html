@@ -18,6 +18,10 @@
     </ul>
 </nav>
 
+<div>
+    <button (click)="btnLogout()">LOG OUT</button>
+</div>
+
 <div class="container">
     <app-mishabitos *ngIf="activeSection === 'mishabitos'"></app-mishabitos>
     <app-recomendados *ngIf="activeSection === 'recomendados'"></app-recomendados>
