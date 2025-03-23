@@ -18,6 +18,10 @@ export class AppComponent implements OnInit {
       if (!isAuthenticated && (!this.isLoginPage() && !this.isRegisterPage() && !this.isInitialPage())) {
         this.router.navigate(['/login']);
       }
+
+      if (isAuthenticated && (this.isLoginPage() || this.isRegisterPage() || this.isInitialPage())) {
+        this.router.navigate(['/home']);
+      }
     });
   }
 
@@ -31,6 +35,10 @@ export class AppComponent implements OnInit {
 
   private isInitialPage(): boolean {
     return window.location.pathname === '/';
+  }
+
+  private isHomePage(): boolean {
+    return window.location.pathname === '/home';
   }
 
 }
