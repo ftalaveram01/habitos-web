@@ -1,14 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/internal/operators/map';
+import { catchError } from 'rxjs/internal/operators/catchError';
+import { of } from 'rxjs/internal/observable/of';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+
   apiHabitosAuthUrl = 'http://localhost:3000/usuarios';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   Login(username: string, password: string, onLogin: (ok: boolean, user?: any) => void) {
 
@@ -19,7 +29,7 @@ export class AuthService {
 
     this.http.post(`${this.apiHabitosAuthUrl}/login`, body, { withCredentials: true }).subscribe((users: any) => {
       if (users) {
-        console.log("LO QUE DEVUELVE LA API: ", users)
+        this.setAuthStatus(true);
         onLogin(true, users)
       }
     },
@@ -49,6 +59,25 @@ export class AuthService {
           onRegister(false)
         }
       }
+    );
+  }
+
+  setAuthStatus(status: boolean): void {
+    this.isAuthenticatedSubject.next(status);
+  }
+
+  checkAuth(): Observable<boolean> {
+    return this.http.get<{ isAuthenticated: boolean }>(`${this.apiHabitosAuthUrl}/verifyaccess`, {
+      withCredentials: true
+    }).pipe(
+      map(response => {
+        this.isAuthenticatedSubject.next(response.isAuthenticated);
+        return response.isAuthenticated;
+      }),
+      catchError(() => {
+        this.isAuthenticatedSubject.next(false);
+        return of(false);
+      })
     );
   }
 }
