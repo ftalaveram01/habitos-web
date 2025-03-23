@@ -12,12 +12,14 @@ export class AuthService {
 
   Login(username: string, password: string, onLogin: (ok: boolean, user?: any) => void) {
 
-    const params = new HttpParams()
-      .set('email', username)
-      .set('password', password);
+    const body = {
+      email: username,
+      password: password
+    }
 
-    this.http.get(`${this.apiHabitosAuthUrl}/login`, { params }).subscribe((users: any) => {
+    this.http.post(`${this.apiHabitosAuthUrl}/login`, body, { withCredentials: true }).subscribe((users: any) => {
       if (users) {
+        console.log("LO QUE DEVUELVE LA API: ", users)
         onLogin(true, users)
       }
     },
