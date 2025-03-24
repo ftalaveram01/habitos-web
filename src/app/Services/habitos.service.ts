@@ -14,4 +14,10 @@ export class HabitosService {
   getHabitosRecomendados(): Observable<any> {
     return this.http.get(`${this.apiHabitosUrl}/recomendados`);
   }
+
+  getHabitos(): Observable<any> {
+    return this.http.get(`${this.apiHabitosUrl}/usuario`, {
+      withCredentials: true
+    });
+  }
 }
