@@ -23,7 +23,7 @@
 }
 
 /* Estilos para desktop (media queries) */
-@media (min-width: 768px) {
+@media (min-width: 767px) {
     .form-group {
         min-width: 200px;
         width: 50dvw;
