@@ -31,16 +31,10 @@ nav ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    padding: 0 15px;
+    margin: 0 auto;
     list-style: none;
-    height: 1dvh;
-}
-
-nav ol {
-    list-style: none;
+    height: fit-content;
 }
 
 nav ul img {
@@ -50,7 +44,8 @@ nav ul img {
 
 li {
     float: left;
-    padding: 10px 10px;
+    margin: 0;
+    padding: 10px;
     background-color: #F88E25;
     border-radius: 50px;
     box-shadow: 0 0 5px #5C4E35;
