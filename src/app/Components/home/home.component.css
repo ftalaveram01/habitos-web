@@ -70,6 +70,16 @@ li {
     border-radius: 10px;
 }
 
+#btn-logout:hover {
+    transition: 300ms;
+    background-color: #5C4E35;
+    transform: scale(1.1);
+}
+
+#btn-logout:not(hover) {
+    transition: 300ms;
+}
+
 .container {
     display: flex;
     justify-content: center;
