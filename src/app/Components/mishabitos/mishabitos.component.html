@@ -1,1 +1,9 @@
-<p>mishabitos works!</p>
+<div class="container">
+    <h2>My Habits</h2>
+    <div class="mishabitos">
+        <section class="habito" *ngFor="let habito of habitos">
+            <h3>{{habito.nombre}}</h3>
+            <p>{{habito.descripcion}}</p>
+        </section>
+    </div>
+</div>
