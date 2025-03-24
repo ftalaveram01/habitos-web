@@ -61,6 +61,15 @@ li {
     box-shadow: none;
 }
 
+#btn-logout {
+    padding: 20px;
+    background-color: #F88E25;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -68,4 +77,9 @@ li {
     margin-top: 100px;
     height: fit-content;
     width: 99vw;
+}
+
+.btn-logout {
+    float: right;
+    margin: 20px 20px 20px 0;
 }
