@@ -74,6 +74,7 @@ li {
     background-color: #F88E25;
     border-radius: 50px;
     box-shadow: 0 0 5px #5C4E35;
+    user-select: none;
 }
 
 #logo {
@@ -89,6 +90,7 @@ li {
     cursor: pointer;
     border: 1px solid #000000;
     border-radius: 10px;
+    user-select: none;
 }
 
 #btn-logout:hover {
