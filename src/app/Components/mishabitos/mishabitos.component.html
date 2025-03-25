@@ -1,6 +1,7 @@
 <div class="container">
     <h2>My Habits</h2>
     <div class="mishabitos">
+        <h3 class="no-habits" *ngIf="habitos.length === 0">NO HABITS YET</h3>
         <section class="habito" *ngFor="let habito of habitos">
             <h3>{{habito.nombre}}</h3>
             <p>{{habito.descripcion}}</p>
