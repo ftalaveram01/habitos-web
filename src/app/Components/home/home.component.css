@@ -45,6 +45,7 @@ nav {
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 10px;
+    z-index: 1000;
     align-items: center;
     justify-content: center;
     background-color: #5C4E35;
@@ -109,7 +110,8 @@ li {
     align-items: center;
     margin-top: 100px;
     height: fit-content;
-    width: 99vw;
+    width: fit-content;
+    min-width: 99dvw;
 }
 
 .btn-logout {
