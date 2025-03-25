@@ -1,6 +1,6 @@
 .container {
     opacity: 0;
-    animation: simpleFadeIn 150ms ease-in 200ms forwards;
+    animation: simpleFadeIn 250ms ease-in 200ms forwards;
 }
 
 @keyframes simpleFadeIn {
