@@ -26,19 +26,19 @@ export class AppComponent implements OnInit {
   }
 
   private isLoginPage(): boolean {
-    return window.location.pathname === '/login';
+    return this.router.url === '/login';
   }
 
   private isRegisterPage(): boolean {
-    return window.location.pathname === '/register';
+    return this.router.url === '/register';
   }
 
   private isInitialPage(): boolean {
-    return window.location.pathname === '/';
+    return this.router.url === '/';
   }
 
   private isHomePage(): boolean {
-    return window.location.pathname === '/home';
+    return this.router.url === '/home';
   }
 
 }
