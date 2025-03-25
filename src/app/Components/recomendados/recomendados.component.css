@@ -50,6 +50,7 @@
     max-width: fit-content;
     padding: 15px;
     background-color: #68C699;
+    color: #FFFFFF;
     border: 1px solid #000000;
     border-radius: 10px;
 }
@@ -58,4 +59,9 @@
     transition: 200ms;
     scale: 1.05;
     cursor: pointer;
+    background-color: #529c78;
+}
+
+#btn-usar:not(:hover) {
+    transition: 200ms;
 }
