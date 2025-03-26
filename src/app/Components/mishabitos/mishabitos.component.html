@@ -1,10 +1,19 @@
 <div class="container">
-    <h2>My Habits</h2>
+    <div class="header">
+        <h2>My Habits</h2>
+        <button id="btn-add">➕</button>
+    </div>
+
     <div class="mishabitos">
         <h3 class="no-habits" *ngIf="habitos.length === 0">NO HABITS YET</h3>
         <section class="habito" *ngFor="let habito of habitos">
             <h3>{{habito.nombre}}</h3>
             <p>{{habito.descripcion}}</p>
+            <div class="btns-habito">
+                <button id="btn-done">DONE✅</button>
+                <button id="btn-update">⚙️</button>
+                <button id="btn-delete">🗑️</button>
+            </div>
         </section>
     </div>
 </div>

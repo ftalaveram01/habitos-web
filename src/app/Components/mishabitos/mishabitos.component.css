@@ -18,6 +18,15 @@
     }
 }
 
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
 .mishabitos {
     display: flex;
     justify-content: center;
@@ -25,47 +34,83 @@
     flex-wrap: wrap;
     margin-top: 20px;
     width: fit-content;
-    border: 1px solid #000;
     border-radius: 10px;
 }
 
 .habito {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     margin: 10px;
-    padding: 10px;
+    padding: 10px 20px;
+    background-color: #D7D73C;
     border: 1px solid #000;
     border-radius: 10px;
-    min-width: 200px;
-    max-width: 300px;
-    height: 250px;
+    width: 320px;
+    height: 300px;
+}
+
+.habito>h3 {
+    font-weight: 900;
+    font-size: x-large;
+    margin: 30px 0 10px 0;
+    height: 10%;
 }
 
 .habito>p {
-    height: 40%;
+    height: 50%;
 }
 
 .no-habits {
     margin: 50px;
 }
 
-#btn-usar {
-    max-width: fit-content;
-    padding: 15px;
+.btns-habito {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.btns-habito button {
+    font-size: large;
+    padding: 10px 60px;
+    border: 1px solid #000;
     background-color: #68C699;
-    color: #FFFFFF;
-    border: 1px solid #000000;
     border-radius: 10px;
-}
-
-#btn-usar:hover {
-    transition: 200ms;
-    scale: 1.05;
     cursor: pointer;
-    background-color: #529c78;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-#btn-usar:not(:hover) {
+.btns-habito button:hover,
+#btn-add:hover {
+    transition: all 200ms ease;
+    transform: scale(1.05);
+}
+
+.btns-habito button:not(:hover),
+#btn-add:not(:hover) {
     transition: 200ms;
+}
+
+#btn-add {
+    background-color: #68C699;
+    margin-left: 20px;
+    padding: 15px 15px;
+    font-size: large;
+    border: 1px solid #000;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+#btn-update {
+    background-color: #5D4157;
+    padding: 10px 15px;
+}
+
+#btn-delete {
+    background-color: #962918;
+    padding: 10px 15px;
 }
