@@ -27,7 +27,7 @@
     margin-bottom: 20px;
 }
 
-.mishabitos {
+.recomendados {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,7 +58,13 @@
 }
 
 .habito>p {
-    height: 50%;
+    height: 45%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    line-clamp: 7;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .no-habits {
