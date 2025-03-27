@@ -1,3 +1,43 @@
-<p>{{nombre}}</p>
-<p>{{email}}</p>
-<p>{{numeroHabitos}}</p>
+<div class="container">
+    <div class="header">
+        <h2>Profile</h2>
+    </div>
+
+    <div class="perfil">
+        <form action="">
+
+            <div class="input-group">
+                <section class="label">
+                    <label for="name">Name</label>
+                </section>
+                <input type="text" value={{nombre}} class="input" id="name" name="name" disabled>
+                <button>👁️</button>
+            </div>
+
+            <div class="input-group">
+                <section class="label">
+                    <label for="email">Email</label>
+                </section>
+                <input type="email" value={{email}} class="input" id="email" name="email" disabled>
+                <button>👁️</button>
+            </div>
+
+            <div class="input-group">
+                <section class="label">
+                    <label for="num-habitos">Number of Habits</label>
+                </section>
+                <input type="number" value={{numeroHabitos}} class="input" id="num-habitos" name="num-habitos" disabled>
+                <button>👁️</button>
+            </div>
+
+            <div class="input-group">
+                <section class="label">
+                    <label for="password">Password</label>
+                </section>
+                <input type="password" value="--------" class="input" id="password" name="password" disabled>
+                <button>👁️</button>
+            </div>
+
+        </form>
+    </div>
+</div>
