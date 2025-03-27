@@ -62,3 +62,13 @@ button {
     font-weight: 900;
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    .input-group {
+        width: 300px;
+    }
+
+    input {
+        width: 280px;
+    }
+}
