@@ -14,15 +14,21 @@ import { AuthService } from '../../Services/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  activeSection: string = 'mishabitos'; // Sección activa por defecto
+  activeSection: string = 'mishabitos';
+  toggleMenu = false;
 
   constructor(private authService: AuthService) { }
 
   showSection(section: string) {
     this.activeSection = section;
+    if (this.toggleMenu) this.toggleMenu = !this.toggleMenu
   }
 
   btnLogout() {
     this.authService.Logout();
+  }
+
+  toggleMenuLateral() {
+    this.toggleMenu = !this.toggleMenu;
   }
 }

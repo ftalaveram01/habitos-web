@@ -1,4 +1,9 @@
-<nav>
+<nav class="nav-desktop" [ngClass]="{ 'mostrar': toggleMenu }">
+    <div class="hamburguesa" (click)="toggleMenuLateral()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
     <ul>
         <li>
             <a (click)="showSection('mishabitos')" [class.active]="activeSection === 'mishabitos'">Habbbits</a>
