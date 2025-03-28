@@ -12,7 +12,7 @@ export class HabitosService {
   apiHabitosUrl = 'https://api-habbbits.vercel.app/habitos';
 
   getHabitosRecomendados(): Observable<any> {
-    return this.http.get(`https://api-habittts.vercel.app/habitos/recomendados`);
+    return this.http.get(`${this.apiHabitosUrl}/recomendados`);
   }
 
   getHabitos(): Observable<any> {
