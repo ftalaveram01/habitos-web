@@ -71,6 +71,7 @@ button {
 button:hover {
     transition: 200ms;
     scale: 1.05;
+    background-color: #50384b;
 }
 
 button:not(:hover) {
