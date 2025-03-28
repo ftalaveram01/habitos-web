@@ -118,3 +118,5 @@ li {
     float: right;
     margin: 20px 20px 20px 0;
 }
+
+@media (max-width: 767px) {}

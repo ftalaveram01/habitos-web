@@ -3,7 +3,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    height: 100vh;
+    height: fit-content;
+    width: fit-content;
+    margin-bottom: 30px;
 }
 
 .header {
@@ -32,6 +34,7 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 10px;
 }
 
 label {
@@ -48,19 +51,30 @@ input {
     border: 3px solid #5D4157;
     padding: 10px;
     margin-bottom: 10px;
+    color: #000;
 }
 
 button {
     align-self: center;
-    width: 50px;
+    width: 150px;
     height: 50px;
-    background-color: #000;
+    margin: 10px 0;
+    border: 1px solid #000;
+    background-color: #5D4157;
     color: #fff;
     border-radius: 10px;
-    border: none;
     font-size: large;
     font-weight: 900;
     cursor: pointer;
+}
+
+button:hover {
+    transition: 200ms;
+    scale: 1.05;
+}
+
+button:not(:hover) {
+    transition: 200ms;
 }
 
 @media (max-width: 768px) {
@@ -70,5 +84,10 @@ button {
 
     input {
         width: 280px;
+    }
+
+    button {
+        border-radius: 50px;
+        width: 200px;
     }
 }
