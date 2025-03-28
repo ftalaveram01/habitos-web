@@ -63,11 +63,6 @@ nav ul {
     height: fit-content;
 }
 
-nav ul img {
-    height: 50px;
-    padding-top: 7px;
-}
-
 li {
     float: left;
     margin: 0;
@@ -76,11 +71,6 @@ li {
     border-radius: 50px;
     box-shadow: 0 0 5px #5C4E35;
     user-select: none;
-}
-
-#logo {
-    background: none;
-    box-shadow: none;
 }
 
 #btn-logout {
@@ -125,11 +115,12 @@ li {
         top: 0;
         left: 0;
         margin: 10px 10px 10px 0;
-        min-width: 150px;
+        min-width: 200px;
         height: 99vh;
         background-color: #5C4E35;
+        border-radius: 0 20px 20px 0;
         transform: translateX(-100%);
-        transition: transform 0.5s;
+        transition: transform 0.3s;
         z-index: 1000;
         box-shadow: none;
     }
@@ -137,7 +128,7 @@ li {
     nav ul {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: right;
         justify-content: space-between;
         padding: 15px 15px;
         margin: 0 auto;
@@ -146,7 +137,7 @@ li {
     }
 
     .nav-desktop.mostrar {
-        transform: translateX(-20%);
+        transform: translateX(-10%);
         display: block;
     }
 

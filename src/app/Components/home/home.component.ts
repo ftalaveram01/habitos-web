@@ -21,7 +21,7 @@ export class HomeComponent {
 
   showSection(section: string) {
     this.activeSection = section;
-    if (this.toggleMenu) this.toggleMenu = !this.toggleMenu
+    this.toggleMenu = false
   }
 
   btnLogout() {
@@ -30,5 +30,9 @@ export class HomeComponent {
 
   toggleMenuLateral() {
     this.toggleMenu = !this.toggleMenu;
+  }
+
+  cerrarMenuLateral() {
+    this.toggleMenu = false
   }
 }
