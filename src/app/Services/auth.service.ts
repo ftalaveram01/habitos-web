@@ -16,7 +16,7 @@ export class AuthService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-  apiHabitosAuthUrl = 'http://localhost:3000/usuarios';
+  apiHabitosAuthUrl = 'https://api-habbbits.vercel.app/usuarios';
 
   constructor(private http: HttpClient, private router: Router) { }
 

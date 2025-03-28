@@ -9,10 +9,10 @@ export class HabitosService {
 
   constructor(private http: HttpClient) { }
 
-  apiHabitosUrl = 'http://localhost:3000/habitos';
+  apiHabitosUrl = 'https://api-habbbits.vercel.app/habitos';
 
   getHabitosRecomendados(): Observable<any> {
-    return this.http.get(`${this.apiHabitosUrl}/recomendados`);
+    return this.http.get(`https://api-habittts.vercel.app/habitos/recomendados`);
   }
 
   getHabitos(): Observable<any> {

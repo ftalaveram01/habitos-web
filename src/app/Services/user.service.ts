@@ -9,7 +9,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  apiUsuarioUrl = 'http://localhost:3000/usuarios'
+  apiUsuarioUrl = 'https://api-habbbits.vercel.app/usuarios'
 
   getUserData(): Observable<any> {
     return this.http.get(`${this.apiUsuarioUrl}/datauser`, { withCredentials: true });
