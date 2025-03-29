@@ -33,7 +33,7 @@ export class AuthService {
         this.setAuthStatus(true);
         onLogin(true, users)
         console.log(users)
-        localStorage.setItem('token', String(users.token));
+        localStorage.setItem('token', JSON.stringify(users.token));
       }
     },
       (error) => {
