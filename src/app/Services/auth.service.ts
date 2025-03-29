@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { of } from 'rxjs/internal/observable/of';
+import { LocalStorageService } from './localstorage.service';
 
 
 @Injectable({
@@ -18,7 +19,7 @@ export class AuthService {
 
   apiHabitosAuthUrl = 'https://api-habbbits.vercel.app/usuarios';
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private localStorage: LocalStorageService) { }
 
   Login(username: string, password: string, onLogin: (ok: boolean, user?: any) => void) {
 
@@ -31,6 +32,7 @@ export class AuthService {
       if (users) {
         this.setAuthStatus(true);
         onLogin(true, users)
+        localStorage.setItem('token', users.token);
       }
     },
       (error) => {
@@ -63,10 +65,9 @@ export class AuthService {
   }
 
   Logout() {
-    this.http.get(`${this.apiHabitosAuthUrl}/logout`, { withCredentials: true }).subscribe(() => {
-      this.setAuthStatus(false);
-      this.router.navigate(['/']);
-    });
+    this.setAuthStatus(false);
+    this.localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 
   setAuthStatus(status: boolean): void {
@@ -74,15 +75,22 @@ export class AuthService {
   }
 
   checkAuth(): Observable<boolean> {
-    return this.http.get<{ isAuthenticated: boolean }>(`${this.apiHabitosAuthUrl}/verifyaccess`, {
-      withCredentials: true
-    }).pipe(
+    const token = this.localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<{ isAuthenticated: boolean }>(
+      `${this.apiHabitosAuthUrl}/verifyaccess`,
+      { headers }
+    ).pipe(
       map(response => {
-        this.isAuthenticatedSubject.next(response.isAuthenticated);
+        this.setAuthStatus(response.isAuthenticated);
         return response.isAuthenticated;
       }),
-      catchError(() => {
-        this.isAuthenticatedSubject.next(false);
+      catchError(error => {
+        this.setAuthStatus(false);
         return of(false);
       })
     );
