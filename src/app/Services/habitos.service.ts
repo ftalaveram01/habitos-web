@@ -20,4 +20,28 @@ export class HabitosService {
       withCredentials: true
     });
   }
+
+  createHabito(habito: any): Observable<any> {
+    return this.http.post(`${this.apiHabitosUrl}/usuario`, habito, {
+      withCredentials: true
+    });
+  }
+  
+  updateHabito(habito: any): Observable<any> {
+    return this.http.put(`${this.apiHabitosUrl}/usuario`, habito, {
+      withCredentials: true
+    });
+  }
+
+  deleteHabito(id: string): Observable<any> {
+    return this.http.delete(`${this.apiHabitosUrl}/usuario/${id}`, {
+      withCredentials: true
+    });
+  }
+
+  getHabito(id: string): Observable<any> {
+    return this.http.get(`${this.apiHabitosUrl}/usuario/${id}`, {
+      withCredentials: true
+    });
+  }
 }
