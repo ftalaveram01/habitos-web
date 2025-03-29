@@ -76,7 +76,8 @@ export class AuthService {
   }
 
   checkAuth(): Observable<boolean> {
-    const token = this.localStorage.getItem('token');
+    const storedToken = localStorage.getItem('token');
+    const token = storedToken ? JSON.parse(storedToken).token : null;
 
     if (!token) {
       this.setAuthStatus(false);
