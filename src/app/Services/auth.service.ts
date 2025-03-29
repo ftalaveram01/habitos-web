@@ -32,7 +32,8 @@ export class AuthService {
       if (users) {
         this.setAuthStatus(true);
         onLogin(true, users)
-        localStorage.setItem('token', users.token);
+        console.log(users)
+        localStorage.setItem('token', String(users.token));
       }
     },
       (error) => {
@@ -76,6 +77,11 @@ export class AuthService {
 
   checkAuth(): Observable<boolean> {
     const token = this.localStorage.getItem('token');
+
+    if (!token) {
+      this.setAuthStatus(false);
+      return of(false);
+    }
 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
