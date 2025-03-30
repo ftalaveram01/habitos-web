@@ -19,4 +19,6 @@ export class MishabitosComponent {
       this.habitos = habitos;
     });
   }
+
+  
 }
