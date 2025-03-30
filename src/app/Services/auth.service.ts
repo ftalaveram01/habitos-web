@@ -63,9 +63,8 @@ export class AuthService {
   }
 
   Logout() {
-    this.http.get(`${this.apiHabitosAuthUrl}/logout`, { withCredentials: true }).subscribe({
+    this.http.post(`${this.apiHabitosAuthUrl}/logout`, { withCredentials: true }).subscribe({
       next: () => {
-          // Limpieza adicional del lado del cliente
           document.cookie = 'token=; Path=/; Domain=.backend.com; Secure; SameSite=None; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
           localStorage.clear();
           this.setAuthStatus(false);
