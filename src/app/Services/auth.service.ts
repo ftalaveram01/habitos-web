@@ -65,6 +65,10 @@ export class AuthService {
   Logout() {
     this.http.get(`${this.apiHabitosAuthUrl}/logout`, { withCredentials: true }).subscribe(() => {
       this.setAuthStatus(false);
+      this.isAuthenticatedSubject.next(false);
+      this.isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+      localStorage.removeItem('token');
+      sessionStorage.removeItem('token');
       this.router.navigate(['/']);
     });
   }
