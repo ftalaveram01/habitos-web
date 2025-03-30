@@ -63,17 +63,12 @@ export class AuthService {
   }
 
   Logout() {
-    this.http.post(`${this.apiHabitosAuthUrl}/logout`, { withCredentials: true }).subscribe({
-      next: () => {
-          document.cookie = 'token=; Path=/; Domain=.backend.com; Secure; SameSite=None; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-          localStorage.clear();
-          this.setAuthStatus(false);
-          this.router.navigate(['/']);
-      },
-      error: (err) => {
-          console.error('Error durante logout:', err);
-      }
-  });
+    this.http.post(`${this.apiHabitosAuthUrl}/logout`, { withCredentials: true }).subscribe(respuesta => {
+      this.setAuthStatus(false);
+      this.router.navigate(['/login']);
+    }, error => {
+      console.error('Error during logout:', error);
+    });
   }
 
   setAuthStatus(status: boolean): void {
