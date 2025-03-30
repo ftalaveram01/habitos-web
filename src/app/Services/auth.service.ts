@@ -63,14 +63,18 @@ export class AuthService {
   }
 
   Logout() {
-    this.http.get(`${this.apiHabitosAuthUrl}/logout`, { withCredentials: true }).subscribe(() => {
-      this.setAuthStatus(false);
-      this.isAuthenticatedSubject.next(false);
-      this.isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
-      localStorage.removeItem('token');
-      sessionStorage.removeItem('token');
-      this.router.navigate(['/']);
-    });
+    this.http.get(`${this.apiHabitosAuthUrl}/logout`, { withCredentials: true }).subscribe({
+      next: () => {
+          // Limpieza adicional del lado del cliente
+          document.cookie = 'token=; Path=/; Domain=.backend.com; Secure; SameSite=None; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+          localStorage.clear();
+          this.setAuthStatus(false);
+          this.router.navigate(['/']);
+      },
+      error: (err) => {
+          console.error('Error durante logout:', err);
+      }
+  });
   }
 
   setAuthStatus(status: boolean): void {
