@@ -12,14 +12,19 @@
         <div>
             <label for="frecuencia">Frequency</label>
             <select id="frecuencia" name="frecuencia" formControlName="frecuencia" required>
-                <option value="daily">Daily</option>
-                <option value="weekly">Weekly</option>
-                <option value="monthly">Monthly</option>
+                <option value="per-hours">Hours</option>
+                <option value="daily">Days</option>
             </select>
         </div>
         <div class="form-group">
             <label for="duracion">Duration</label>
             <input type="number" id="duracion" name="duracion" formControlName="duracion" required>
+        </div>
+        <div class="form-group">
+            <label class="switch" for="checkbox">
+                <input type="checkbox" id="checkbox"/>
+                <div class="slider round"></div>
+            </label>
         </div>
         <button type="submit" [disabled]="!form.valid">Create Habit</button>
     </form>
