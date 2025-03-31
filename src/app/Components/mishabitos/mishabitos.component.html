@@ -12,8 +12,15 @@
             <div class="btns-habito">
                 <button id="btn-done">DONE✅</button>
                 <button id="btn-update">⚙️</button>
-                <button id="btn-delete">🗑️</button>
+                <button id="btn-delete" (click)="deleteTemporal(habito.id)">🗑️</button>
             </div>
         </section>
+    </div>
+    <div class="modal" *ngIf="abrirModal" [ngStyle]="{'display': 'block'}">
+        <div class="modal-content">
+            <button class="close" (click)="cerrarModal()">❌</button>
+            <p>Delete?</p>
+            <button (click)="deleteHabito()">🗑️</button>
+        </div>
     </div>
 </div>

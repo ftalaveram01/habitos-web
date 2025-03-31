@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class MishabitosComponent {
 
   habitos: any = [];
+  idHabitoABorrar!: Number;
+  abrirModal = false;
 
   constructor(private habitosService: HabitosService, private router: Router) { }
 
@@ -25,5 +27,18 @@ export class MishabitosComponent {
     this.router.navigate(['/home/new']);
   }
 
+  deleteTemporal(id: any) {
+    this.abrirModal = true;
+    this.idHabitoABorrar = Number(id);
+  }
+
+  cerrarModal() {
+    this.abrirModal = false
+  }
+
+  deleteHabito() {
+    console.log('BORRANDO...')
+    this.abrirModal = false;
+  }
 
 }
