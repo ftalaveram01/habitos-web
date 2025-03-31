@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HabitosService } from '../../Services/habitos.service';
 
 @Component({
   selector: 'app-habitoform',
@@ -14,26 +15,25 @@ export class HabitoformComponent {
   form !: FormGroup;
   errors: { [nameError: string]: string } = {};
 
-  habito: any = {
-    nombre: '',
-    descripcion: '',
-    frecuencia: '',
-    duracion: ''
-  };
-
-
-  constructor(private router: Router, private fb: FormBuilder) { }
+  constructor(private router: Router, private fb: FormBuilder, private habitosService: HabitosService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       nombre: [''],
       descripcion: [''],
+      intervalo: ['1', [Validators.min(1), Validators.max(999)]],
       frecuencia: [''],
-      duracion: ['']
+      fechaInicio: [''],
+      publico: ['']
     });
   }
 
   onSubmit() {
-    // Handle form submission
+    this.habitosService.createHabito(this.form.value).subscribe(res => {
+      if (res.success) {
+        alert('Habbbit correctly created');
+        this.router.navigate(["/home"]);
+      }
+    });
   }
 }
