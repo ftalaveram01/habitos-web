@@ -1,48 +1,208 @@
+.header {
+  padding: 20px;
+  margin: 0;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.container {
+  opacity: 0;
+  animation: simpleFadeIn 250ms ease-in 200ms forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100dvw;
+  height: fit-content;
+}
+
+h2 {
+  font-weight: 900;
+}
+
+@keyframes simpleFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #D7D73C;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+label {
+  font-size: x-large;
+  margin: 15px 0 10px 0;
+  height: 10%;
+}
+
+input,
+textarea,
+select {
+  width: 480px;
+  height: 20px;
+  border-radius: 10px;
+  border: 3px solid #5D4157;
+  background-color: #68C699;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border: 3px solid #5D4157;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+textarea {
+  height: 100px;
+}
+
 .switch {
-    display: inline-block;
-    height: 34px;
-    position: relative;
-    width: 60px;
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+  border: 2px solid #5D4157;
+  border-radius: 34px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked+.slider {
+  background-color: #68C699;
+}
+
+input:checked+.slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+button {
+  align-self: center;
+  width: 150px;
+  height: 50px;
+  margin: 10px 0;
+  border: 1px solid #000;
+  background-color: #5D4157;
+  color: #fff;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+button:hover {
+  transition: 200ms;
+  scale: 1.05;
+  background-color: #50384b;
+}
+
+button:not(:hover) {
+  transition: 200ms;
+}
+
+button:disabled {
+  background-color: #534e52;
+  color: grey;
+  scale: none;
+  cursor: not-allowed;
+}
+
+.frecuency {
+  flex-direction: row;
+
+  input {
+    width: 380px;
   }
-  
-  .switch input {
-    display:none;
+
+  select {
+    height: 45px;
+    width: 100px;
   }
-  
-  .slider {
-    background-color: #ccc;
-    bottom: 0;
-    cursor: pointer;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: .4s;
+}
+
+@media (max-width: 768px) {
+  .input-group {
+    width: 300px;
   }
-  
-  .slider:before {
-    background-color: #fff;
-    bottom: 4px;
-    content: "";
-    height: 26px;
-    left: 4px;
-    position: absolute;
-    transition: .4s;
-    width: 26px;
+
+  input {
+    width: 280px;
   }
-  
-  input:checked + .slider {
-    background-color: #66bb6a;
+
+  textarea {
+    width: 280px;
   }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
+
+  .frecuency {
+    input {
+      width: 180px;
+    }
+
+    select {
+      height: 45px;
+      width: 100px;
+    }
   }
-  
-  .slider.round {
-    border-radius: 34px;
+
+  button {
+    border-radius: 50px;
+    width: 200px;
   }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
+}
