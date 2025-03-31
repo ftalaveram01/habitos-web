@@ -75,10 +75,19 @@ button {
         width: 90dvw;
     }
 
+    .botones {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90dvw;
+    }
+
     button {
         margin: 0;
         border-radius: 50px;
-        width: 100%;
+        width: 90%;
+        max-width: 400px;
     }
 
     #login-button {
