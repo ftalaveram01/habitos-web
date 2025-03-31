@@ -16,11 +16,13 @@
             </div>
         </section>
     </div>
-    <div class="modal" *ngIf="abrirModal" [ngStyle]="{'display': 'block'}">
+    <div class="modal" *ngIf="abrirModal" [ngStyle]="{'display': 'flex'}">
         <div class="modal-content">
-            <button class="close" (click)="cerrarModal()">❌</button>
-            <p>Delete?</p>
-            <button (click)="deleteHabito()">🗑️</button>
+            <h3>Sure to delete?</h3>
+            <div class="btns-modal">
+                <button (click)="deleteHabito()">🗑️</button>
+                <button class="close" (click)="cerrarModal()">❌</button>
+            </div>
         </div>
     </div>
 </div>
