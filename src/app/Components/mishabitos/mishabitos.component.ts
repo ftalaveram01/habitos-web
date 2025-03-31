@@ -34,11 +34,13 @@ export class MishabitosComponent {
 
   cerrarModal() {
     this.abrirModal = false
+    this.idHabitoABorrar = -1;
   }
 
   deleteHabito() {
-    console.log('BORRANDO...')
+    this.habitosService.deleteHabito(this.idHabitoABorrar).subscribe();
     this.abrirModal = false;
+    this.ngOnInit();
   }
 
 }

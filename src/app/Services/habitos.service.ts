@@ -50,8 +50,8 @@ export class HabitosService {
     });
   }
 
-  deleteHabito(id: string): Observable<any> {
-    return this.http.delete(`${this.apiHabitosUrl}/usuario/${id}`, {
+  deleteHabito(id: Number): Observable<any> {
+    return this.http.delete(`${this.apiHabitosUrl}/${String(id)}`, {
       withCredentials: true
     });
   }
