@@ -14,6 +14,7 @@ export class HabitoformComponent implements OnInit, OnDestroy {
 
   form !: FormGroup;
   errors: { [nameError: string]: string } = {};
+  id!: number;
   nombre: string = '';
   descripcion: string = '';
   publico: boolean = false;
@@ -31,8 +32,9 @@ export class HabitoformComponent implements OnInit, OnDestroy {
       this.descripcion = String(localStorage.getItem('descripcion')).replaceAll('"', '');
     }
 
-    if (localStorage.getItem('publico') != null) {
+    if (localStorage.getItem('publico') != null && localStorage.getItem('id')) {
       this.publico = localStorage.getItem('publico') === 'true'
+      this.id = Number(localStorage.getItem('id'));
     }
 
     console.log(this.publico)
@@ -57,12 +59,21 @@ export class HabitoformComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.habitosService.createHabito(this.form.value).subscribe(res => {
-      if (res.success) {
-        alert('Habbbit correctly created');
-        this.router.navigate(["/home"]);
-      }
-    });
+    if (this.isCreado) {
+      this.habitosService.createHabito(this.form.value).subscribe(res => {
+        if (res.success) {
+          alert('Habbbit correctly created');
+          this.router.navigate(["/home"]);
+        }
+      });
+    } else {
+      this.habitosService.updateHabito(this.id, this.form.value).subscribe(res => {
+        if (res.success) {
+          alert('Habbbit correctly update');
+          this.router.navigate(["/home"]);
+        }
+      });
+    }
   }
 
 }

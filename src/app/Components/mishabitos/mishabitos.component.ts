@@ -27,7 +27,8 @@ export class MishabitosComponent {
     this.router.navigate(['/home/new']);
   }
 
-  updateHabito(nombre: string, descripcion: string, publico: boolean) {
+  updateHabito(id: any, nombre: string, descripcion: string, publico: boolean) {
+    localStorage.setItem('id', id);
     localStorage.setItem('nombre', nombre);
     localStorage.setItem('descripcion', descripcion);
     localStorage.setItem('publico', String(publico));

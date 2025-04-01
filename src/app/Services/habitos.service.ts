@@ -44,8 +44,17 @@ export class HabitosService {
     });
   }
 
-  updateHabito(habito: any): Observable<any> {
-    return this.http.put(`${this.apiHabitosUrl}/usuario`, habito, {
+  updateHabito(id: number, habito: any): Observable<any> {
+
+    const body = {
+      "nombre": habito.nombre,
+      "descripcion": habito.descripcion,
+      "publico": habito.publico
+    }
+
+    console.log(body)
+
+    return this.http.put(`${this.apiHabitosUrl}/${id}`, body, {
       withCredentials: true
     });
   }
