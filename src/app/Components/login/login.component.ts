@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
-import { LocalStorageService } from '../../Services/localstorage.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +15,7 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private localStorage: LocalStorageService, private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() { }
 

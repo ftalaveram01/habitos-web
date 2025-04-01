@@ -9,7 +9,7 @@
 
             <h3>{{habito.nombre}}</h3>
             <p>{{habito.descripcion}}</p>
-            <button id="btn-usar">USE</button>
+            <button id="btn-usar" (click)="btnUsar(habito.nombre, habito.descripcion)">USE</button>
 
         </section>
 

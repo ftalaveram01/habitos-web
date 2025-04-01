@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HabitosService } from '../../Services/habitos.service';
 
 @Component({
@@ -14,18 +14,31 @@ export class HabitoformComponent {
 
   form !: FormGroup;
   errors: { [nameError: string]: string } = {};
+  nombre: string = '';
+  descripcion: string = '';
+  recomendado: boolean = false;
 
-  constructor(private router: Router, private fb: FormBuilder, private habitosService: HabitosService) { }
+  constructor(private router: Router, private fb: FormBuilder, private habitosService: HabitosService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.nombre = String(localStorage.getItem('nombre')).replaceAll('"', '');
+    this.descripcion = String(localStorage.getItem('descripcion')).replaceAll('"', '');
+
+    if (this.nombre != '' || this.descripcion != '') {
+      localStorage.removeItem('nombre')
+      localStorage.removeItem('descripcion')
+    }
+
     this.form = this.fb.group({
-      nombre: [''],
-      descripcion: [''],
+      nombre: [this.nombre],
+      descripcion: [this.descripcion],
       intervalo: ['1', [Validators.min(1), Validators.max(999)]],
       frecuencia: [''],
       fechaInicio: [''],
       publico: ['']
     });
+
   }
 
   onSubmit() {
