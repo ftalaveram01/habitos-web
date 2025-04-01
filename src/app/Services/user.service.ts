@@ -26,7 +26,12 @@ export class UserService {
   }
 
   updatePassword(formRes: any): Observable<any> {
-    console.log(formRes)
-    return new Observable;
+    
+    const body = {
+      "password": formRes.password,
+      "newPassword": formRes.newpassword
+    }
+
+    return this.http.put(`${this.apiUsuarioUrl}/password`, body, {withCredentials: true});
   }
 }

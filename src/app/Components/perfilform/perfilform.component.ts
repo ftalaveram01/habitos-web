@@ -35,7 +35,9 @@ export class PerfilformComponent implements OnInit, OnDestroy {
       password: [''],
       newpassword: [''],
       confirmnewpassword: ['']
-    })
+    }, {
+      validators: this.passwordMatchValidator
+    });
   }
 
   ngOnDestroy(): void {
@@ -49,6 +51,16 @@ export class PerfilformComponent implements OnInit, OnDestroy {
       return { invalidEmail: true };
     }
     return null;
+  }
+
+  passwordMatchValidator(formGroup: FormGroup): void {
+    const password = formGroup.get('newpassword')?.value;
+    const confirmPassword = formGroup.get('confirmnewpassword')?.value;
+
+    if (password !== confirmPassword) {
+      formGroup.get('confirmnewpassword')?.setErrors({ noMatch: true });
+    } else {
+    }
   }
 
   updateUser() {
@@ -70,22 +82,34 @@ export class PerfilformComponent implements OnInit, OnDestroy {
 
   cerrarModal() {
     this.abrirModal = false;
+    this.passwordForm.reset();
   }
 
   updatePassword() {
     this.userService.updatePassword(this.passwordForm.value).subscribe(
       (response) => {
-        alert('Password updated successfully!');
-        this.cerrarModal()
+        if(response.success){
+          alert('Password updated successfully!');
+          this.cerrarModal();
+          this.passwordForm.reset();
+        } else {
+          alert('Error updating password!');
+          this.passwordForm.reset();
+        }
       }
       , (error) => {
         this.errors = error.error.errors;
+        alert('Error updating password!');
+        this.passwordForm.reset();
       })
-    this.abrirModal = false;
   }
 
   get email() {
     return this.form.get('email');
+  }
+
+  get confirmnewpassword(){
+    return this.passwordForm.get('confirmnewpassword');
   }
 
 }

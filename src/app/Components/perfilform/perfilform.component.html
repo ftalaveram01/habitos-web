@@ -36,6 +36,9 @@
                 <input type="password" formControlName="newpassword" required>
                 <label for="password">Confirm New</label>
                 <input type="password" formControlName="confirmnewpassword" required>
+                <div *ngIf="confirmnewpassword?.hasError('noMatch') && confirmnewpassword?.touched" class="error">
+                    Las contraseñas no coinciden.
+                </div>
             </form>
             <div class="btns-modal">
                 <button (click)="updatePassword()" [disabled]="!passwordForm.valid">UPDATE</button>
