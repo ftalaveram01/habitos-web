@@ -11,9 +11,7 @@ import { AuthService } from './Services/auth.service';
 export class AppComponent implements OnInit {
   title = 'Habitos';
 
-  constructor(private authService: AuthService, private router: Router) { }
-
-  ngOnInit() {
+  constructor(private authService: AuthService, private router: Router) {
     this.authService.checkAuth().subscribe((isAuthenticated) => {
       if (!isAuthenticated && (!this.isLoginPage() && !this.isRegisterPage() && !this.isInitialPage())) {
         this.router.navigate(['/login']);
@@ -23,6 +21,9 @@ export class AppComponent implements OnInit {
         this.router.navigate(['/home']);
       }
     });
+  }
+
+  ngOnInit() {
   }
 
   private isLoginPage(): boolean {
