@@ -1,6 +1,6 @@
 <div class="container">
     <div class="header">
-        <h2>New Habbbit</h2>
+        <h2>{{isCreado ? 'New' : 'Update'}} Habbbit</h2>
     </div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -11,7 +11,7 @@
             <label for="descripcion">Description</label>
             <textarea id="descripcion" name="descripcion" formControlName="descripcion" required></textarea>
         </div>
-        <div class="form-group">
+        <div class="form-group" *ngIf="isCreado">
             <label for="frecuencia">Frequency</label>
             <div class="frecuency">
                 <input type="number" id="intervalo" name="intervalo" min="1" max="999" formControlName="intervalo"
@@ -22,7 +22,7 @@
                 </select>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" *ngIf="isCreado">
             <label for="fecha-inicio">Initial Date</label>
             <input type="datetime-local" id="fecha-inicio" name="fecha-inicio" formControlName="fechaInicio" required>
         </div>

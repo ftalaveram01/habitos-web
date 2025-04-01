@@ -16,9 +16,13 @@ export class HabitoformComponent implements OnInit, OnDestroy {
   errors: { [nameError: string]: string } = {};
   nombre: string = '';
   descripcion: string = '';
+  publico: boolean = false;
   recomendado: boolean = false;
+  isCreado: boolean = true;
 
-  constructor(private router: Router, private fb: FormBuilder, private habitosService: HabitosService, private route: ActivatedRoute) { }
+  constructor(private router: Router, private fb: FormBuilder, private habitosService: HabitosService, private route: ActivatedRoute) {
+    this.isCreado = !Boolean(this.route.snapshot.queryParamMap.get('update') === 'true');
+  }
 
   ngOnInit(): void {
 
@@ -27,13 +31,19 @@ export class HabitoformComponent implements OnInit, OnDestroy {
       this.descripcion = String(localStorage.getItem('descripcion')).replaceAll('"', '');
     }
 
+    if (localStorage.getItem('publico') != null) {
+      this.publico = localStorage.getItem('publico') === 'true'
+    }
+
+    console.log(this.publico)
+
     this.form = this.fb.group({
       nombre: [this.nombre, [Validators.min(1)]],
       descripcion: [this.descripcion, [Validators.min(1)]],
       intervalo: ['1', [Validators.min(1), Validators.max(999)]],
       frecuencia: [''],
       fechaInicio: [''],
-      publico: ['']
+      publico: [this.publico]
     });
 
   }
@@ -42,6 +52,7 @@ export class HabitoformComponent implements OnInit, OnDestroy {
     if (this.nombre != '' || this.descripcion != '') {
       localStorage.removeItem('nombre')
       localStorage.removeItem('descripcion')
+      localStorage.removeItem('publico')
     }
   }
 

@@ -27,6 +27,13 @@ export class MishabitosComponent {
     this.router.navigate(['/home/new']);
   }
 
+  updateHabito(nombre: string, descripcion: string, publico: boolean) {
+    localStorage.setItem('nombre', nombre);
+    localStorage.setItem('descripcion', descripcion);
+    localStorage.setItem('publico', String(publico));
+    this.router.navigate(['/home/new'], { queryParams: { update: 'true' } });
+  }
+
   deleteTemporal(id: any) {
     this.abrirModal = true;
     this.idHabitoABorrar = Number(id);

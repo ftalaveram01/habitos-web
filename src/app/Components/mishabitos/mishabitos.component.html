@@ -11,7 +11,8 @@
             <p>{{habito.descripcion}}</p>
             <div class="btns-habito">
                 <button id="btn-done">DONE✅</button>
-                <button id="btn-update">⚙️</button>
+                <button id="btn-update" (click)="updateHabito(habito.nombre, habito.descripcion, true)"
+                    disabled>⚙️</button>
                 <button id="btn-delete" (click)="deleteTemporal(habito.id)">🗑️</button>
             </div>
         </section>
