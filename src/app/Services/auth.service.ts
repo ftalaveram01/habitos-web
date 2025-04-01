@@ -65,7 +65,7 @@ export class AuthService {
   Logout() {
     this.http.post(`${this.apiHabitosAuthUrl}/logout`, null, { withCredentials: true }).subscribe(respuesta => {
       this.setAuthStatus(false);
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     }, error => {
       console.error('Error during logout:', error);
     });
