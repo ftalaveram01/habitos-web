@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../Services/user.service';
 import { CommonModule } from '@angular/common';
+import { LocalStorageService } from '../../Services/localstorage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -14,7 +16,7 @@ export class PerfilComponent {
   email: String = '';
   numeroHabitos: Number = 0
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private localStorage: LocalStorageService, private router: Router) { }
 
   ngOnInit() {
     this.userService.getUserData().subscribe((data: any) => {
@@ -22,5 +24,11 @@ export class PerfilComponent {
       this.email = data.email;
       this.numeroHabitos = data.numeroHabitos;
     })
+  }
+
+  btnUpdate() {
+    this.localStorage.setItem('nombre', this.nombre);
+    this.localStorage.setItem('email', this.email);
+    this.router.navigate(['/home/update'])
   }
 }

@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>UPDATE PROFILE</h2>
+
+    <form class="form-group" [formGroup]="form" (ngSubmit)="updateUser()">
+        <label for="nombre">Name</label>
+        <input id="nombre" type="text" formControlName="nombre" name="nombre" required>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" name="email" required>
+        <div *ngIf="email?.invalid && email?.touched" class="error">
+            El correo electrónico no es válido.
+        </div>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" value="********" disabled>
+    </form>
+
+</div>
