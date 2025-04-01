@@ -22,8 +22,10 @@ export class HabitoformComponent {
 
   ngOnInit(): void {
 
-    this.nombre = String(localStorage.getItem('nombre')).replaceAll('"', '');
-    this.descripcion = String(localStorage.getItem('descripcion')).replaceAll('"', '');
+    if (localStorage.getItem('nombre') != null && localStorage.getItem('descripcion') != null) {
+      this.nombre = String(localStorage.getItem('nombre')).replaceAll('"', '');
+      this.descripcion = String(localStorage.getItem('descripcion')).replaceAll('"', '');
+    }
 
     if (this.nombre != '' || this.descripcion != '') {
       localStorage.removeItem('nombre')
