@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LocalStorageService } from '../../Services/localstorage.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-perfilform',
@@ -17,7 +18,7 @@ export class PerfilformComponent implements OnInit, OnDestroy {
   name: String = '';
   mail: String = '';
 
-  constructor(private localStorage: LocalStorageService, private router: Router, private fb: FormBuilder) { }
+  constructor(private localStorage: LocalStorageService, private router: Router, private fb: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
     this.name = String(this.localStorage.getItem('nombre')).replaceAll('"', '');
@@ -43,7 +44,16 @@ export class PerfilformComponent implements OnInit, OnDestroy {
   }
 
   updateUser() {
-
+    this.userService.updateUserData(this.form.value).subscribe(
+      (response) => {
+        alert('User data updated successfully!');
+        this.router.navigate(['/home']);
+      }
+      , (error) => {
+        console.error('Error updating user data:', error);
+        this.errors = error.error.errors;
+      }
+    );
   }
 
   get email() {

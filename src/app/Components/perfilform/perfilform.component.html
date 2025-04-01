@@ -13,6 +13,8 @@
 
         <label for="password">Password</label>
         <input id="password" type="password" name="password" value="********" disabled>
+
+        <button type="button" (click)="updateUser()" [disabled]="!form.valid">UPDATE</button>
     </form>
 
 </div>
