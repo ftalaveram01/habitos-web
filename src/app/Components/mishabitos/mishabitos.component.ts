@@ -38,9 +38,10 @@ export class MishabitosComponent {
   }
 
   deleteHabito() {
-    this.habitosService.deleteHabito(this.idHabitoABorrar).subscribe();
+    this.habitosService.deleteHabito(this.idHabitoABorrar).subscribe(() => {
+      this.habitos = this.habitos.filter((habito: any) => habito.id !== this.idHabitoABorrar);
+    });
     this.abrirModal = false;
-    this.ngOnInit();
   }
 
 }
