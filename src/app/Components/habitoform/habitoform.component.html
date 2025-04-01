@@ -32,6 +32,6 @@
                 <div class="slider round"></div>
             </label>
         </div>
-        <button type="submit" [disabled]="!form.valid">Create Habit</button>
+        <button type="submit" [disabled]="!form.valid">{{isCreado ? 'Create' : 'Update'}} Habit</button>
     </form>
 </div>
