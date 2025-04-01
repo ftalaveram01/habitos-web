@@ -12,7 +12,7 @@
             <div class="btns-habito">
                 <button id="btn-done">DONE✅</button>
                 <button id="btn-update"
-                    (click)="updateHabito(habito.id, habito.nombre, habito.descripcion, true)">⚙️</button>
+                    (click)="updateHabito(habito.id, habito.nombre, habito.descripcion, habito.publico == '0' ? false : true)">⚙️</button>
                 <button id="btn-delete" (click)="deleteTemporal(habito.id)">🗑️</button>
             </div>
         </section>
