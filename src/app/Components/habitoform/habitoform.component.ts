@@ -33,8 +33,8 @@ export class HabitoformComponent {
     }
 
     this.form = this.fb.group({
-      nombre: [this.nombre],
-      descripcion: [this.descripcion],
+      nombre: [this.nombre, [Validators.min(1)]],
+      descripcion: [this.descripcion, [Validators.min(1)]],
       intervalo: ['1', [Validators.min(1), Validators.max(999)]],
       frecuencia: [''],
       fechaInicio: [''],
