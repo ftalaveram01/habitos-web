@@ -55,6 +55,7 @@ export class HabitoformComponent implements OnInit, OnDestroy {
       localStorage.removeItem('nombre')
       localStorage.removeItem('descripcion')
       localStorage.removeItem('publico')
+      localStorage.removeItem('id')
     }
   }
 
