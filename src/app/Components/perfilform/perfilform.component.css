@@ -1,0 +1,243 @@
+.header {
+    padding: 20px;
+    margin: 0;
+
+    h2 {
+        margin: 0;
+    }
+}
+
+.container {
+    opacity: 0;
+    animation: simpleFadeIn 250ms ease-in 200ms forwards;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100dvw;
+    height: fit-content;
+    padding-bottom: 20px;
+}
+
+h2 {
+    font-weight: 900;
+}
+
+@keyframes simpleFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #D7D73C;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+label {
+    font-size: x-large;
+    margin: 15px 0 10px 0;
+    height: 10%;
+}
+
+input {
+    width: 480px;
+    height: 20px;
+    border-radius: 10px;
+    border: 3px solid #5D4157;
+    background-color: #68C699;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+input:focus {
+    outline: none;
+    border: 3px solid #5D4157;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    margin: 10px 0;
+    border: 1px solid #000;
+    background-color: #5D4157;
+    color: #fff;
+    border-radius: 10px;
+    font-size: large;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+button:hover {
+    transition: 200ms;
+    scale: 1.05;
+    background-color: #50384b;
+}
+
+button:not(:hover) {
+    transition: 200ms;
+}
+
+button:disabled {
+    background-color: #534e52;
+    color: grey;
+    scale: none;
+    cursor: not-allowed;
+}
+
+.password {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    input {
+        width: 430px;
+        color: rgb(59, 59, 59);
+        margin: 0;
+    }
+
+    button {
+        margin: 0;
+        padding: 10px;
+        height: 49px;
+        width: 49px;
+        border: 1px solid #000;
+    }
+}
+
+.modal {
+    display: none;
+    opacity: 0;
+    animation: simpleFadeIn 150ms ease-in 200ms forwards;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    opacity: 0;
+    animation: simpleFadeIn 50ms ease-in 200ms forwards;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #F88E25;
+    border: 1px solid #000;
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+    margin: 0 20px;
+    padding: 20px;
+}
+
+@keyframes simpleFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.btns-modal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+
+.btns-modal button {
+    font-size: large;
+    padding: 10px 20px;
+    width: 6em;
+    border: 1px solid #000;
+    background-color: #68C699;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btns-modal button:disabled {
+    background-color: #534e52;
+    color: grey;
+    scale: none;
+    cursor: not-allowed;
+}
+
+.btns-modal button:hover {
+    transition: all 150ms ease;
+    transform: scale(1.05);
+}
+
+.btns-modal button:not(:hover) {
+    transition: 150ms;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    border: 1px solid #000;
+    border-radius: 50px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .input-group {
+        width: 300px;
+    }
+
+    input {
+        width: 280px;
+    }
+
+    .password {
+        input {
+            width: 235px;
+        }
+
+        button {
+            height: 45px;
+            width: 45px;
+        }
+    }
+}

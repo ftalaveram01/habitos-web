@@ -24,4 +24,9 @@ export class UserService {
 
     return this.http.put(`${this.apiUsuarioUrl}`, body, { withCredentials: true });
   }
+
+  updatePassword(formRes: any) {
+    console.log(formRes)
+
+  }
 }

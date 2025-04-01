@@ -1,20 +1,47 @@
 <div class="container">
-    <h2>UPDATE PROFILE</h2>
-
-    <form class="form-group" [formGroup]="form" (ngSubmit)="updateUser()">
-        <label for="nombre">Name</label>
-        <input id="nombre" type="text" formControlName="nombre" name="nombre" required>
-
-        <label for="email">Email</label>
-        <input id="email" type="email" formControlName="email" name="email" required>
-        <div *ngIf="email?.invalid && email?.touched" class="error">
-            El correo electrónico no es válido.
+    <div class="header">
+        <h2>UPDATE PROFILE</h2>
+    </div>
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="nombre">Name</label>
+            <input id="nombre" type="text" formControlName="nombre" name="nombre" required>
         </div>
 
-        <label for="password">Password</label>
-        <input id="password" type="password" name="password" value="********" disabled>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email" name="email" required>
+            <div *ngIf="email?.invalid && email?.touched" class="error">
+                El correo electrónico no es válido.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password">
+                <input id="password" type="password" name="password" value="********" disabled>
+                <button type="button" (click)="updatePasswordTemporal()">⚙️</button>
+            </div>
+        </div>
 
         <button type="button" (click)="updateUser()" [disabled]="!form.valid">UPDATE</button>
     </form>
+
+    <div class="modal" *ngIf="abrirModal" [ngStyle]="{'display': 'flex'}">
+        <div class="modal-content">
+            <form [formGroup]="passwordForm">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" required>
+                <label for="password">New Password</label>
+                <input type="password" formControlName="newpassword" required>
+                <label for="password">Confirm New</label>
+                <input type="password" formControlName="confirmnewpassword" required>
+            </form>
+            <div class="btns-modal">
+                <button (click)="updatePassword()" [disabled]="!passwordForm.valid">UPDATE</button>
+                <button class="close" (click)="cerrarModal()">❌</button>
+            </div>
+        </div>
+    </div>
 
 </div>

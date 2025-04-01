@@ -14,9 +14,11 @@ import { UserService } from '../../Services/user.service';
 export class PerfilformComponent implements OnInit, OnDestroy {
 
   form !: FormGroup;
+  passwordForm !: FormGroup;
   errors: { [nameError: string]: string } = {};
   name: String = '';
   mail: String = '';
+  abrirModal = false;
 
   constructor(private localStorage: LocalStorageService, private router: Router, private fb: FormBuilder, private userService: UserService) { }
 
@@ -28,6 +30,12 @@ export class PerfilformComponent implements OnInit, OnDestroy {
       nombre: [this.name, [Validators.required, Validators.minLength(1), Validators.maxLength(30)]],
       email: [this.mail, Validators.required, this.emailValidator]
     });
+
+    this.passwordForm = this.fb.group({
+      password: [''],
+      newpassword: [''],
+      confirmnewpassword: ['']
+    })
   }
 
   ngOnDestroy(): void {
@@ -54,6 +62,19 @@ export class PerfilformComponent implements OnInit, OnDestroy {
         this.errors = error.error.errors;
       }
     );
+  }
+
+  updatePasswordTemporal() {
+    this.abrirModal = true;
+  }
+
+  cerrarModal() {
+    this.abrirModal = false;
+  }
+
+  updatePassword() {
+    this.userService.updatePassword(this.passwordForm.value)
+    this.abrirModal = false;
   }
 
   get email() {
