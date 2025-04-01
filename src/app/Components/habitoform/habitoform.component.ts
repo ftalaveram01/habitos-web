@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HabitosService } from '../../Services/habitos.service';
@@ -10,7 +10,7 @@ import { HabitosService } from '../../Services/habitos.service';
   templateUrl: './habitoform.component.html',
   styleUrl: './habitoform.component.css'
 })
-export class HabitoformComponent {
+export class HabitoformComponent implements OnInit, OnDestroy {
 
   form !: FormGroup;
   errors: { [nameError: string]: string } = {};
@@ -27,11 +27,6 @@ export class HabitoformComponent {
       this.descripcion = String(localStorage.getItem('descripcion')).replaceAll('"', '');
     }
 
-    if (this.nombre != '' || this.descripcion != '') {
-      localStorage.removeItem('nombre')
-      localStorage.removeItem('descripcion')
-    }
-
     this.form = this.fb.group({
       nombre: [this.nombre, [Validators.min(1)]],
       descripcion: [this.descripcion, [Validators.min(1)]],
@@ -43,6 +38,13 @@ export class HabitoformComponent {
 
   }
 
+  ngOnDestroy(): void {
+    if (this.nombre != '' || this.descripcion != '') {
+      localStorage.removeItem('nombre')
+      localStorage.removeItem('descripcion')
+    }
+  }
+
   onSubmit() {
     this.habitosService.createHabito(this.form.value).subscribe(res => {
       if (res.success) {
@@ -51,4 +53,5 @@ export class HabitoformComponent {
       }
     });
   }
+
 }
