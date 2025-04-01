@@ -73,7 +73,14 @@ export class PerfilformComponent implements OnInit, OnDestroy {
   }
 
   updatePassword() {
-    this.userService.updatePassword(this.passwordForm.value)
+    this.userService.updatePassword(this.passwordForm.value).subscribe(
+      (response) => {
+        alert('Password updated successfully!');
+        this.cerrarModal()
+      }
+      , (error) => {
+        this.errors = error.error.errors;
+      })
     this.abrirModal = false;
   }
 

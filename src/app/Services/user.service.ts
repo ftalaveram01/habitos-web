@@ -25,8 +25,8 @@ export class UserService {
     return this.http.put(`${this.apiUsuarioUrl}`, body, { withCredentials: true });
   }
 
-  updatePassword(formRes: any) {
+  updatePassword(formRes: any): Observable<any> {
     console.log(formRes)
-
+    return new Observable;
   }
 }

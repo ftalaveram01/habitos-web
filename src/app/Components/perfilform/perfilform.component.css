@@ -190,13 +190,6 @@ button:disabled {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-.btns-modal button:disabled {
-    background-color: #534e52;
-    color: grey;
-    scale: none;
-    cursor: not-allowed;
-}
-
 .btns-modal button:hover {
     transition: all 150ms ease;
     transform: scale(1.05);
@@ -219,6 +212,13 @@ button:disabled {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.btns-modal button:disabled {
+    background-color: #534e52;
+    color: grey;
+    scale: none;
+    cursor: not-allowed;
 }
 
 @media (max-width: 768px) {
