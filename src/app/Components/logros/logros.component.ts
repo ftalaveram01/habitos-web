@@ -15,17 +15,19 @@ export class LogrosComponent implements OnInit {
   historial: any[] = [];
   nombresHistorial: any[] = [];
   historialMostrado: any[] = [];
+  totalPoints: number = 0;
 
   constructor(private historialHabitosService: HistorialHabitosService) {
     this.historialHabitosService.getHistorial().subscribe((data) => {
       this.historial = data;
       this.historialMostrado = data;
       this.nombresHistorial = [...new Set(data.map((item: { nombre: any; }) => item.nombre))];
-    })
+      this.totalPoints = data.reduce((acumulador: any, actual: { puntuacion: any; }) => acumulador + actual.puntuacion, 0);
+      if (this.totalPoints < 0) this.totalPoints = 0;
+    });
   }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
   }
 
   filtrarHistorial() {

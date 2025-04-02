@@ -1,18 +1,26 @@
+<div>
+    <h2>Achievements</h2>
+    <h4>Total points: {{totalPoints}}</h4>
+</div>
+
 <div class="filter-container">
 
-    <section>
-        <select id="filtro-estado" [(ngModel)]="nombreFiltro" (change)="filtrarHistorial()">
+    <section class="filtro">
+        <select id="seleccion-filtro" [(ngModel)]="nombreFiltro" (change)="filtrarHistorial()">
             <option value="All" selected>All</option>
             <option *ngFor="let n of nombresHistorial" [value]="n">{{n}}</option>
         </select>
     </section>
 
-    <section>
-        <div *ngFor="let h of historialMostrado">
+</div>
+
+<div class="container">
+    <section class="historiales">
+        <div class="historial" *ngFor="let h of historialMostrado">
             <p>{{h.nombre}}</p>
-            <p>{{h.puntuacion}}</p>
             <p>{{h.fecha_registro}}</p>
+            <p>{{h.puntuacion}}</p>
+            <p>{{h.puntual == 1 ? '✅' : '❌'}}</p>
         </div>
     </section>
-
 </div>
