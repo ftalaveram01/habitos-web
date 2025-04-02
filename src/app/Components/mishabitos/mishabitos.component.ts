@@ -15,12 +15,13 @@ export class MishabitosComponent {
   idHabitoABorrar!: Number;
   abrirModal = false;
 
-  constructor(private habitosService: HabitosService, private router: Router) { }
-
-  ngOnInit(): void {
+  constructor(private habitosService: HabitosService, private router: Router) {
     this.habitosService.getHabitos().subscribe((habitos: any) => {
       this.habitos = habitos;
     });
+  }
+
+  ngOnInit() {
   }
 
   crearHabito() {

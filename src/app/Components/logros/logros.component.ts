@@ -16,14 +16,16 @@ export class LogrosComponent implements OnInit {
   nombresHistorial: any[] = [];
   historialMostrado: any[] = [];
 
-  constructor(private historialHabitosService: HistorialHabitosService) { }
-
-  ngOnInit(): void {
+  constructor(private historialHabitosService: HistorialHabitosService) {
     this.historialHabitosService.getHistorial().subscribe((data) => {
       this.historial = data;
       this.historialMostrado = data;
       this.nombresHistorial = [...new Set(data.map((item: { nombre: any; }) => item.nombre))];
     })
+  }
+
+  ngOnInit(): void {
+
   }
 
   filtrarHistorial() {
