@@ -1,9 +1,12 @@
 .header {
-  padding: 20px;
+
+  transition: 100ms;
+
+  padding: 40px;
   margin: 0;
 
   h2 {
-    margin: 0;
+    margin: 20px;
   }
 }
 
@@ -188,6 +191,17 @@ button:disabled {
 }
 
 @media (max-width: 768px) {
+
+  .header {
+    transition: 100ms;
+    padding: 20px;
+    margin: 0;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
   .input-group {
     width: 100%;
   }

@@ -1,9 +1,9 @@
 .header {
-    padding: 20px;
+    padding: 40px;
     margin: 0;
 
     h2 {
-        margin: 0;
+        margin: 20px;
     }
 }
 
@@ -12,9 +12,13 @@
     animation: simpleFadeIn 250ms ease-in 200ms forwards;
     display: flex;
     justify-content: center;
+    justify-self: center;
     align-items: center;
+    align-self: center;
     flex-direction: column;
     width: 100dvw;
+    height: 100dvh;
+    max-width: 600px;
     height: fit-content;
     padding-bottom: 20px;
 }
@@ -41,6 +45,7 @@ form {
     background-color: #D7D73C;
     border: 1px solid #000;
     border-radius: 10px;
+    width: 90%;
     padding: 10px 20px;
 }
 
@@ -49,6 +54,7 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 label {
@@ -58,7 +64,7 @@ label {
 }
 
 input {
-    width: 480px;
+    width: 90%;
     height: 20px;
     border-radius: 10px;
     border: 3px solid #5D4157;
@@ -110,9 +116,10 @@ button:disabled {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 95%;
 
     input {
-        width: 430px;
+        width: 90%;
         color: rgb(59, 59, 59);
         margin: 0;
     }
@@ -121,7 +128,7 @@ button:disabled {
         margin: 0;
         padding: 10px;
         height: 49px;
-        width: 49px;
+        width: 10%;
         border: 1px solid #000;
     }
 }
@@ -222,22 +229,27 @@ button:disabled {
 }
 
 @media (max-width: 768px) {
-    .input-group {
-        width: 300px;
+
+    .container {
+        width: 90%;
+    }
+
+    .form-group {
+        width: 100%;
     }
 
     input {
-        width: 280px;
+        width: 90%;
     }
 
     .password {
         input {
-            width: 235px;
+            width: 85%;
         }
 
         button {
-            height: 45px;
-            width: 45px;
+            height: 47px;
+            width: 15%;
         }
     }
 }

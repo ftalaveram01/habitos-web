@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     height: fit-content;
-    width: 50dvw;
+    width: 90dvw;
     max-width: 600px;
     margin: 10px 20px;
     margin-bottom: 30px;
@@ -27,7 +27,7 @@
 }
 
 .perfil {
-    width: 100%;
+    width: 95%;
     height: fit-content;
     background-color: #D7D73C;
     border: 1px solid #000;
@@ -60,7 +60,7 @@ label {
 }
 
 input {
-    width: 90%;
+    width: 85%;
     height: 30px;
     border-radius: 10px;
     border: 3px solid #5D4157;
@@ -96,8 +96,6 @@ button:not(:hover) {
 @media (max-width: 768px) {
 
     .container {
-        max-width: 100%;
-        width: 90dvw;
         margin: 10px 0 30px;
     }
 
