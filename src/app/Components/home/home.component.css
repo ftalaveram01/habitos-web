@@ -116,7 +116,7 @@ li {
         left: 0;
         margin: 10px 10px 10px 0;
         min-width: 200px;
-        height: 99vh;
+        height: fit-content;
         background-color: #5C4E35;
         border-radius: 0 20px 20px 0;
         transform: translateX(-100%);
@@ -130,10 +130,14 @@ li {
         flex-direction: column;
         align-items: right;
         justify-content: space-between;
-        padding: 15px 15px;
+        padding: 25px 15px;
         margin: 0 auto;
         list-style: none;
         height: 30dvh;
+    }
+
+    li {
+        border-radius: 10px;
     }
 
     .nav-desktop.mostrar {
