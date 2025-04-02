@@ -10,7 +10,7 @@
             <h3>{{habito.nombre}}</h3>
             <p>{{habito.descripcion}}</p>
             <div class="btns-habito">
-                <button id="btn-done">DONE✅</button>
+                <button id="btn-done" (click)="doneHabito(habito.id)">DONE✅</button>
                 <button id="btn-update"
                     (click)="updateHabito(habito.id, habito.nombre, habito.descripcion, habito.publico == '0' ? false : true)">⚙️</button>
                 <button id="btn-delete" (click)="deleteTemporal(habito.id)">🗑️</button>

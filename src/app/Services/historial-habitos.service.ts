@@ -14,4 +14,9 @@ export class HistorialHabitosService {
   getHistorial(): Observable<any> {
     return this.http.get(`${this.apiHistorialUrl}`, { withCredentials: true })
   }
+
+  createHistorial(id: number): Observable<any> {
+    return this.http.post(`${this.apiHistorialUrl}/${id}`, null, { withCredentials: true })
+  }
+
 }

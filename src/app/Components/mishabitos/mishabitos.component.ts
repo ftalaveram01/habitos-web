@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HabitosService } from '../../Services/habitos.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { HistorialHabitosService } from '../../Services/historial-habitos.service';
 
 @Component({
   selector: 'app-mishabitos',
@@ -15,7 +16,7 @@ export class MishabitosComponent {
   idHabitoABorrar!: Number;
   abrirModal = false;
 
-  constructor(private habitosService: HabitosService, private router: Router) {
+  constructor(private habitosService: HabitosService, private historialService: HistorialHabitosService, private router: Router) {
     this.habitosService.getHabitos().subscribe((habitos: any) => {
       this.habitos = habitos;
     });
@@ -34,6 +35,14 @@ export class MishabitosComponent {
     localStorage.setItem('descripcion', descripcion);
     localStorage.setItem('publico', String(publico));
     this.router.navigate(['/home/new'], { queryParams: { update: 'true' } });
+  }
+
+  doneHabito(id: number) {
+    this.historialService.createHistorial(id).subscribe(response => {
+      if (response.success) {
+        alert('Habbbit done!')
+      }
+    });
   }
 
   deleteTemporal(id: any) {
