@@ -62,4 +62,25 @@ export class MishabitosComponent {
     this.abrirModal = false;
   }
 
+  getRemainingTime(id: number): string {
+    const habito = this.habitos.find((h: { id: number; }) => h.id === id);
+
+    if (!habito) {
+      return "Hábito no encontrado";
+    }
+
+    const fechaActual = new Date();
+    const fechaHabito = new Date(habito.fecha_nueva_actualizacion);
+
+    const diferenciaMs = fechaHabito.getTime() - fechaActual.getTime();
+
+    if (diferenciaMs <= 0) return 'TOO LATE...'
+
+    // Cálculo de días y horas
+    const dias = Math.floor(diferenciaMs / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenciaMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+    return `Days: ${dias}, Hours: ${horas}`;
+  }
+
 }

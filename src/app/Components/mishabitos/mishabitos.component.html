@@ -8,7 +8,8 @@
         <h3 class="no-habits" *ngIf="habitos.length === 0">NO HABITS YET</h3>
         <section class="habito" *ngFor="let habito of habitos">
             <h3>{{habito.nombre}}</h3>
-            <p>{{habito.descripcion}}</p>
+            <p class="desc">{{habito.descripcion}}</p>
+            <p class="time-left">⌚{{getRemainingTime(habito.id)}}</p>
             <div class="btns-habito">
                 <button id="btn-done" (click)="doneHabito(habito.id)">DONE✅</button>
                 <button id="btn-update"

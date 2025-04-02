@@ -59,14 +59,19 @@
     height: 10%;
 }
 
-.habito>p {
-    height: 45%;
+.habito>.desc {
+    height: 35%;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 7;
     line-clamp: 7;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.time-left {
+    height: fit-content;
+    margin: 8px 0;
 }
 
 .no-habits {
