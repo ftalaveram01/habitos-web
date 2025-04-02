@@ -1,4 +1,4 @@
-<div>
+<div class="header">
     <h2>Achievements</h2>
     <h4>Total points: {{totalPoints}}</h4>
 </div>
@@ -17,10 +17,14 @@
 <div class="container">
     <section class="historiales">
         <div class="historial" *ngFor="let h of historialMostrado">
-            <p>{{h.nombre}}</p>
-            <p>{{h.fecha_registro}}</p>
-            <p>{{h.puntuacion}}</p>
-            <p>{{h.puntual == 1 ? '✅' : '❌'}}</p>
+            <div class="content-historial">
+                <p>{{h.nombre}}</p>
+                <p>{{h.fecha_registro}}</p>
+                <p>{{h.puntuacion}}</p>
+            </div>
+            <div class="okey">
+                <p id="okey">{{h.puntual == 1 ? '✅' : '❌'}}</p>
+            </div>
         </div>
     </section>
 </div>

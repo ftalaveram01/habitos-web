@@ -1,0 +1,111 @@
+.container {
+    opacity: 0;
+    animation: simpleFadeIn 250ms ease-in 200ms forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 20px;
+    width: 80dvw;
+}
+
+@keyframes simpleFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.header {
+    opacity: 0;
+    animation: simpleFadeIn 250ms ease-in 200ms forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.filter-container {
+    opacity: 0;
+    animation: simpleFadeIn 250ms ease-in 200ms forwards;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    height: fit-content;
+    width: 90%;
+    max-width: 650px;
+    background-color: #5D4157;
+    border-radius: 50px;
+}
+
+.filter-container>select>option {
+    margin: 10px;
+    padding: 10px;
+}
+
+#seleccion-filtro {
+    height: 30px;
+    margin: 20px;
+    background-color: #F88E25;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.historiales {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 650px;
+    background-color: #D7D73C;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.historial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5px;
+    margin: 10px;
+    padding: 10px 20px;
+    border: 3px solid #5D4157;
+    border-radius: 10px;
+    min-width: fit-content;
+    width: 70%;
+    max-width: 650px;
+    height: fit-content;
+}
+
+.historial>div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#okey {
+    margin: 0;
+    padding: 3px;
+    height: fit-content;
+    width: fit-content;
+    border: 3px solid #5D4157;
+    border-radius: 50px;
+}
+
+.content-historial {
+    width: 80%;
+}
+
+.content-historial>p {
+    margin: 8px 0;
+}
