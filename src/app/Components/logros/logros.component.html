@@ -16,6 +16,7 @@
 
 <div class="container">
     <section class="historiales">
+        <h3 class="no-achievements" *ngIf="historial.length === 0">NO ACHIEVEMENTS YET</h3>
         <div class="historial" *ngFor="let h of historialMostrado">
             <div class="content-historial">
                 <h4>Name:</h4>
