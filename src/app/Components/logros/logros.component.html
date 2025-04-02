@@ -23,7 +23,9 @@
                 <p>{{h.puntuacion}}</p>
             </div>
             <div class="okey">
-                <p id="okey">{{h.puntual == 1 ? '✅' : '❌'}}</p>
+                <p id="okey"
+                    [ngStyle]="h.puntual == 1 ? {'background-color': '#68C699'} : {'background-color': '#962918'}">
+                </p>
             </div>
         </div>
     </section>
