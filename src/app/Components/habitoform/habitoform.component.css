@@ -12,9 +12,11 @@
   animation: simpleFadeIn 250ms ease-in 200ms forwards;
   display: flex;
   justify-content: center;
+  justify-self: center;
   align-items: center;
   flex-direction: column;
-  width: 100dvw;
+  width: 90dvw;
+  max-width: 600px;
   height: fit-content;
   padding-bottom: 20px;
 }
@@ -42,6 +44,7 @@ form {
   border: 1px solid #000;
   border-radius: 10px;
   padding: 10px 20px;
+  width: fit-content;
 }
 
 .form-group {
@@ -49,6 +52,7 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 label {
@@ -60,7 +64,8 @@ label {
 input,
 textarea,
 select {
-  width: 480px;
+  width: 90dvw;
+  max-width: 500px;
   height: 20px;
   border-radius: 10px;
   border: 3px solid #5D4157;
@@ -166,39 +171,43 @@ button:disabled {
 }
 
 .frecuency {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: row;
+  width: 100%;
 
   input {
-    width: 380px;
+    width: 70%;
   }
 
   select {
     height: 45px;
-    width: 100px;
+    width: 20%;
   }
 }
 
 @media (max-width: 768px) {
   .input-group {
-    width: 300px;
+    width: 100%;
   }
 
   input {
-    width: 280px;
+    width: 90%;
   }
 
   textarea {
-    width: 280px;
+    width: 90%;
   }
 
   .frecuency {
     input {
-      width: 180px;
+      width: 60%;
     }
 
     select {
       height: 45px;
-      width: 100px;
+      width: 30%;
     }
   }
 
