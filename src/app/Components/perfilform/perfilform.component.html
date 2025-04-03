@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <button type="button" (click)="updateUser()" [disabled]="!form.valid">UPDATE</button>
+        <button id="upd-btn" type="button" (click)="updateUser()" [disabled]="!form.valid">UPDATE</button>
     </form>
 
     <div class="modal" *ngIf="abrirModal" [ngStyle]="{'display': 'flex'}">

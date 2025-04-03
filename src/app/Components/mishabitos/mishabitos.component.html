@@ -9,7 +9,8 @@
         <section class="habito" *ngFor="let habito of habitos">
             <h3>{{habito.nombre}}</h3>
             <p class="desc">{{habito.descripcion}}</p>
-            <p class="time-left"><img src="/assets/images/reloj.png" alt="RESTANTE">{{getRemainingTime(habito.id)}}</p>
+            <p class="time-left"><img id="reloj" src="/assets/images/reloj.png"
+                    alt="RESTANTE">{{getRemainingTime(habito.id)}}</p>
             <div class="btns-habito">
                 <button id="btn-done" (click)="doneHabito(habito.id)">
                     DONE<img src="/assets/images/comprobado.png" alt="TICK VERDE">
