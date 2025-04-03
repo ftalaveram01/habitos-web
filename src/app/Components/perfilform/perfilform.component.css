@@ -192,7 +192,6 @@ button:disabled {
 
 .btns-modal button {
     font-size: large;
-    padding: 10px 20px;
     width: 6em;
     border: 1px solid #000;
     background-color: #68C699;
@@ -210,12 +209,13 @@ button:disabled {
     transition: 150ms;
 }
 
-.close {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
+button.close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid #000;
     border-radius: 50px;
+    padding: 0;
 }
 
 .close:hover,
