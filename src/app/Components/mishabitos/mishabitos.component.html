@@ -11,10 +11,14 @@
             <p class="desc">{{habito.descripcion}}</p>
             <p class="time-left">⌚{{getRemainingTime(habito.id)}}</p>
             <div class="btns-habito">
-                <button id="btn-done" (click)="doneHabito(habito.id)">DONE✅</button>
+                <button id="btn-done" (click)="doneHabito(habito.id)">
+                    DONE<img src="/assets/images/comprobado.png" alt="TICK VERDE">
+                </button>
                 <button id="btn-update"
-                    (click)="updateHabito(habito.id, habito.nombre, habito.descripcion, habito.publico == '0' ? false : true)">⚙️</button>
-                <button id="btn-delete" (click)="deleteTemporal(habito.id)">🗑️</button>
+                    (click)="updateHabito(habito.id, habito.nombre, habito.descripcion, habito.publico == '0' ? false : true)"><img
+                        src="/assets/images/editar.png" alt="TICK VERDE"></button>
+                <button id="btn-delete" (click)="deleteTemporal(habito.id)"><img src="/assets/images/eliminar.png"
+                        alt="TICK VERDE"></button>
             </div>
         </section>
     </div>
