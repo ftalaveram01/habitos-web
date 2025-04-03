@@ -42,6 +42,7 @@ export class MishabitosComponent {
     this.historialService.createHistorial(id).subscribe(response => {
       if (response.success) {
         this.toastr.info('Habbbit done successfully', 'Habbbit done!', { timeOut: 1100 })
+        this.recargarHabitos()
       }
     });
   }
@@ -78,11 +79,16 @@ export class MishabitosComponent {
 
     if (diferenciaMs <= 0) return 'TOO LATE...'
 
-    // Cálculo de días y horas
     const dias = Math.floor(diferenciaMs / (1000 * 60 * 60 * 24));
     const horas = Math.floor((diferenciaMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
     return `Days: ${dias}, Hours: ${horas}`;
+  }
+
+  recargarHabitos() {
+    this.habitosService.getHabitos().subscribe((habitos: any) => {
+      this.habitos = habitos;
+    });
   }
 
 }
