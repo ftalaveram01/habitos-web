@@ -148,6 +148,7 @@
 
 .btns-modal button {
     font-size: large;
+    padding: 20px;
     border: 1px solid #000;
     background-color: #68C699;
     border-radius: 10px;
@@ -163,6 +164,8 @@
 .btns-modal button:not(:hover) {
     transition: 150ms;
 }
+
+.delete {}
 
 .close {
     color: #aaa;
