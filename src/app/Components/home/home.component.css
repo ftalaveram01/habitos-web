@@ -112,6 +112,10 @@ li {
     margin: 20px 20px 20px 0;
 }
 
+#bye-mobile {
+    display: none;
+}
+
 @media (max-width: 767px) {
     .nav-desktop {
         position: fixed;
@@ -190,5 +194,15 @@ li {
     .hamburguesa.active span:nth-child(3) {
         top: 50%;
         transform: rotate(-45deg);
+    }
+}
+
+@media (max-width: 840px) {
+    #bye-desktop {
+        display: none;
+    }
+
+    #bye-mobile {
+        display: block;
     }
 }
