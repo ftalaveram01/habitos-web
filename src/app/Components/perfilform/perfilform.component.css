@@ -119,16 +119,20 @@ button:disabled {
     width: 95%;
 
     input {
-        width: 90%;
+        width: 85%;
         color: rgb(59, 59, 59);
         margin: 0;
     }
 
     button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin: 0;
-        padding: 10px;
+        padding-top: 0;
         height: 49px;
-        width: 10%;
+        width: 15%;
+        min-width: 49px;
         border: 1px solid #000;
     }
 }

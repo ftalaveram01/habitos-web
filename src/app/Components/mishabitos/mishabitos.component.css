@@ -70,6 +70,8 @@
 }
 
 .time-left {
+    display: flex;
+    align-items: center;
     height: fit-content;
     margin: 8px 0;
 }
@@ -148,9 +150,9 @@
 }
 
 .btns-modal button {
-    font-size: large;
     text-align: center;
-    padding: 20px;
+    padding: 5px;
+    height: 100%;
     border: 1px solid #000;
     background-color: #68C699;
     border-radius: 10px;
@@ -166,8 +168,6 @@
 .btns-modal button:not(:hover) {
     transition: 150ms;
 }
-
-.delete {}
 
 .close {
     color: #aaa;
@@ -196,10 +196,12 @@
 }
 
 #btn-add {
+    display: flex;
+    align-items: center;
     background-color: #68C699;
     margin-left: 20px;
-    padding: 15px 15px;
-    font-size: large;
+    padding: 10px;
+    height: fit-content;
     border: 1px solid #000;
     border-radius: 10px;
     cursor: pointer;

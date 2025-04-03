@@ -1,7 +1,7 @@
 <div class="container">
     <div class="header">
         <h2>My Habits</h2>
-        <button id="btn-add" (click)="crearHabito()">➕</button>
+        <button id="btn-add" (click)="crearHabito()"><img src="/assets/images/nuevo.png" alt="NUEVO HABITO"></button>
     </div>
 
     <div class="mishabitos">
@@ -9,16 +9,16 @@
         <section class="habito" *ngFor="let habito of habitos">
             <h3>{{habito.nombre}}</h3>
             <p class="desc">{{habito.descripcion}}</p>
-            <p class="time-left">⌚{{getRemainingTime(habito.id)}}</p>
+            <p class="time-left"><img src="/assets/images/reloj.png" alt="RESTANTE">{{getRemainingTime(habito.id)}}</p>
             <div class="btns-habito">
                 <button id="btn-done" (click)="doneHabito(habito.id)">
                     DONE<img src="/assets/images/comprobado.png" alt="TICK VERDE">
                 </button>
                 <button id="btn-update"
                     (click)="updateHabito(habito.id, habito.nombre, habito.descripcion, habito.publico == '0' ? false : true)"><img
-                        src="/assets/images/editar.png" alt="TICK VERDE"></button>
+                        src="/assets/images/editar.png" alt="EDITAR"></button>
                 <button id="btn-delete" (click)="deleteTemporal(habito.id)"><img src="/assets/images/eliminar.png"
-                        alt="TICK VERDE"></button>
+                        alt="ELIMINAR"></button>
             </div>
         </section>
     </div>
@@ -26,8 +26,10 @@
         <div class="modal-content">
             <h3>Sure to delete?</h3>
             <div class="btns-modal">
-                <button class="delete" (click)="deleteHabito()">🗑️</button>
-                <button class="close" (click)="cerrarModal()">❌</button>
+                <button class="delete" (click)="deleteHabito()"><img src="/assets/images/eliminar.png"
+                        alt="BORRAR"></button>
+                <button class="close" (click)="cerrarModal()"><img src="/assets/images/cerrar.png"
+                        alt="CERRAR"></button>
             </div>
         </div>
     </div>

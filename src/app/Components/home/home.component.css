@@ -77,8 +77,8 @@ li {
 }
 
 #btn-logout {
-    font-size: 1.2em;
-    padding: 20px;
+    font-size: 1em;
+    padding: 10px;
     background-color: #F88E25;
     color: #FFFFFF;
     cursor: pointer;
@@ -110,10 +110,6 @@ li {
 .btn-logout {
     float: right;
     margin: 20px 20px 20px 0;
-}
-
-#bye-mobile {
-    display: none;
 }
 
 @media (max-width: 767px) {
@@ -194,15 +190,5 @@ li {
     .hamburguesa.active span:nth-child(3) {
         top: 50%;
         transform: rotate(-45deg);
-    }
-}
-
-@media (max-width: 840px) {
-    #bye-desktop {
-        display: none;
-    }
-
-    #bye-mobile {
-        display: block;
     }
 }
