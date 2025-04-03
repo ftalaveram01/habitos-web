@@ -5,6 +5,8 @@ import { RecomendadosComponent } from '../recomendados/recomendados.component';
 import { LogrosComponent } from '../logros/logros.component';
 import { PerfilComponent } from '../perfil/perfil.component';
 import { AuthService } from '../../Services/auth.service';
+import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +19,7 @@ export class HomeComponent {
   activeSection: string = 'mishabitos';
   toggleMenu = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private toastr: ToastrService) { }
 
   showSection(section: string) {
     this.activeSection = section;

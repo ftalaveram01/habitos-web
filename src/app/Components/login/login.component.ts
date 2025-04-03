@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() { }
 
@@ -23,8 +24,6 @@ export class LoginComponent {
     this.authService.Login(this.email, this.password, (ok: boolean, user?: any) => {
       if (ok) {
         this.router.navigate(['/home']);
-      } else {
-        alert('Invalid username or password');
       }
     })
   }

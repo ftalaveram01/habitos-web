@@ -120,6 +120,11 @@ button:not(:hover) {
     transform: scale(1);
 }
 
+button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
 .error {
     color: red;
     font-size: 1.2em;

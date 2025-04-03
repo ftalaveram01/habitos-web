@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from './Services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,17 @@ import { AuthService } from './Services/auth.service';
 export class AppComponent implements OnInit {
   title = 'Habitos';
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {
     this.authService.checkAuth().subscribe((isAuthenticated) => {
-      if (!isAuthenticated && (!this.isLoginPage() && !this.isRegisterPage() && !this.isInitialPage())) {
-        this.router.navigate(['/login']);
-      }
+
 
       if (isAuthenticated && (this.isLoginPage() || this.isRegisterPage() || this.isInitialPage())) {
+        this.toastr.success('Credentials validated', 'Welcome!', { timeOut: 800 })
         this.router.navigate(['/home']);
+      }
+
+      if (!isAuthenticated && (!this.isLoginPage() && !this.isRegisterPage() && !this.isInitialPage())) {
+        this.router.navigate(['/login']);
       }
     });
   }

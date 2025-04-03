@@ -4,6 +4,7 @@ import { LocalStorageService } from '../../Services/localstorage.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../../Services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-perfilform',
@@ -20,7 +21,7 @@ export class PerfilformComponent implements OnInit, OnDestroy {
   mail: String = '';
   abrirModal = false;
 
-  constructor(private localStorage: LocalStorageService, private router: Router, private fb: FormBuilder, private userService: UserService) { }
+  constructor(private localStorage: LocalStorageService, private router: Router, private fb: FormBuilder, private userService: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.name = String(this.localStorage.getItem('nombre')).replaceAll('"', '');
@@ -66,11 +67,11 @@ export class PerfilformComponent implements OnInit, OnDestroy {
   updateUser() {
     this.userService.updateUserData(this.form.value).subscribe(
       (response) => {
-        alert('User data updated successfully!');
+        this.toastr.info('User data updated successfully!', 'User Update', { timeOut: 1100 })
         this.router.navigate(['/home']);
       }
       , (error) => {
-        console.error('Error updating user data:', error);
+        this.toastr.error('Error updating user data', 'User Update', { timeOut: 1100 })
         this.errors = error.error.errors;
       }
     );
@@ -88,18 +89,18 @@ export class PerfilformComponent implements OnInit, OnDestroy {
   updatePassword() {
     this.userService.updatePassword(this.passwordForm.value).subscribe(
       (response) => {
-        if(response.success){
-          alert('Password updated successfully!');
+        if (response.success) {
+          this.toastr.info('Password updated successfully!', 'Password Update', { timeOut: 1100 })
           this.cerrarModal();
           this.passwordForm.reset();
         } else {
-          alert('Error updating password!');
+          this.toastr.error('Error updating password!!', 'Password Update', { timeOut: 1000 })
           this.passwordForm.reset();
         }
       }
       , (error) => {
         this.errors = error.error.errors;
-        alert('Error updating password!');
+        this.toastr.error('Error updating password!!', 'Password Update', { timeOut: 1000 })
         this.passwordForm.reset();
       })
   }
@@ -108,7 +109,7 @@ export class PerfilformComponent implements OnInit, OnDestroy {
     return this.form.get('email');
   }
 
-  get confirmnewpassword(){
+  get confirmnewpassword() {
     return this.passwordForm.get('confirmnewpassword');
   }
 

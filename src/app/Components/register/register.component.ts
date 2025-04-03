@@ -32,10 +32,7 @@ export class RegisterComponent {
   onSubmit() {
     this.authService.Register(this.form.value, (ok: boolean) => {
       if (ok) {
-        alert('Registration successful');
         this.router.navigate(['/login']);
-      } else {
-        alert('Registration failed');
       }
     })
   }

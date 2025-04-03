@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HabitosService } from '../../Services/habitos.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-habitoform',
@@ -21,7 +22,7 @@ export class HabitoformComponent implements OnInit, OnDestroy {
   recomendado: boolean = false;
   isCreado: boolean = true;
 
-  constructor(private router: Router, private fb: FormBuilder, private habitosService: HabitosService, private route: ActivatedRoute) {
+  constructor(private router: Router, private fb: FormBuilder, private habitosService: HabitosService, private route: ActivatedRoute, private toastr: ToastrService) {
     this.isCreado = !Boolean(this.route.snapshot.queryParamMap.get('update') === 'true');
   }
 
@@ -63,14 +64,14 @@ export class HabitoformComponent implements OnInit, OnDestroy {
     if (this.isCreado) {
       this.habitosService.createHabito(this.form.value).subscribe(res => {
         if (res.success) {
-          alert('Habbbit correctly created');
+          this.toastr.info('Habbbit created', 'Created', { timeOut: 1000 })
           this.router.navigate(["/home"]);
         }
       });
     } else {
       this.habitosService.updateHabito(this.id, this.form.value).subscribe(res => {
         if (res.success) {
-          alert('Habbbit correctly update');
+          this.toastr.info('Habbbit updated', 'Updated', { timeOut: 1000 })
           this.router.navigate(["/home"]);
         }
       });

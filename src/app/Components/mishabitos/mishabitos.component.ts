@@ -3,6 +3,7 @@ import { HabitosService } from '../../Services/habitos.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HistorialHabitosService } from '../../Services/historial-habitos.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-mishabitos',
@@ -16,7 +17,7 @@ export class MishabitosComponent {
   idHabitoABorrar!: Number;
   abrirModal = false;
 
-  constructor(private habitosService: HabitosService, private historialService: HistorialHabitosService, private router: Router) {
+  constructor(private habitosService: HabitosService, private historialService: HistorialHabitosService, private router: Router, private toastr: ToastrService) {
     this.habitosService.getHabitos().subscribe((habitos: any) => {
       this.habitos = habitos;
     });
@@ -40,7 +41,7 @@ export class MishabitosComponent {
   doneHabito(id: number) {
     this.historialService.createHistorial(id).subscribe(response => {
       if (response.success) {
-        alert('Habbbit done!')
+        this.toastr.info('Habbbit done successfully', 'Habbbit done!', { timeOut: 1100 })
       }
     });
   }
@@ -58,6 +59,7 @@ export class MishabitosComponent {
   deleteHabito() {
     this.habitosService.deleteHabito(this.idHabitoABorrar).subscribe(() => {
       this.habitos = this.habitos.filter((habito: any) => habito.id !== this.idHabitoABorrar);
+      this.toastr.info('Habbbit delete successfully', 'Habbbit delete', { timeOut: 1100 })
     });
     this.abrirModal = false;
   }
