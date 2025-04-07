@@ -87,6 +87,7 @@
     flex-direction: row;
     text-align: center;
     justify-content: space-between;
+    gap: 0.15em;
     margin-bottom: 5px;
 }
 
