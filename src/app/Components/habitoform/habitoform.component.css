@@ -190,6 +190,10 @@ button:disabled {
   }
 }
 
+label.switch {
+  margin-top: 0;
+}
+
 @media (max-width: 768px) {
 
   .header {
