@@ -162,10 +162,17 @@
     padding: 10px 15px;
     height: 100%;
     border: 1px solid #000;
-    background-color: #68C699;
     border-radius: 10px;
     cursor: pointer;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+button.delete {
+    background-color: #962918;
+}
+
+button.close {
+    background-color: #68C699;
 }
 
 .btns-modal button:hover {
