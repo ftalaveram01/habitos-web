@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -15,29 +16,42 @@ export class RegisterComponent {
   form !: FormGroup;
   name: string = '';
   errors: { [nameError: string]: string } = {};
+  ready: boolean = false
+  passwordPatternCorrect: boolean = false
+  submitted = false;
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) { }
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: ['', Validators.required, Validators.minLength(1), Validators.maxLength(30)],
-      email: ['', Validators.required, this.emailValidator],
-      password: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(30)]],
+      email: ['', [Validators.required, this.emailValidator.bind(this)]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/)
+      ]],
       confirmPassword: ['', Validators.required]
     }, {
-      validators: this.passwordMatchValidator
-    })
+      validators: this.passwordMatchValidator.bind(this)
+    });
   }
 
   onSubmit() {
-    this.authService.Register(this.form.value, (ok: boolean) => {
-      if (ok) {
-        this.router.navigate(['/login']);
-      }
-    })
+    this.submitted = true;
+
+    if (this.form.valid) {
+      this.authService.Register(this.form.value, (ok: boolean) => {
+        if (ok) {
+          this.router.navigate(['/login']);
+        }
+      })
+    } else {
+      this.toastr.warning("Form must be completely and correctly done", "Form invalid", { timeOut: 1000 })
+    }
   }
 
-  async emailValidator(control: any) {
+  emailValidator(control: any): { [key: string]: boolean } | null {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (control.value && !emailPattern.test(control.value)) {
       return { invalidEmail: true };

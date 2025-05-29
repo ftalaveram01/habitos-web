@@ -20,6 +20,7 @@ export class PerfilformComponent implements OnInit, OnDestroy {
   name: String = '';
   mail: String = '';
   abrirModal = false;
+  submitted = false;
 
   constructor(private localStorage: LocalStorageService, private router: Router, private fb: FormBuilder, private userService: UserService, private toastr: ToastrService) { }
 
@@ -33,9 +34,13 @@ export class PerfilformComponent implements OnInit, OnDestroy {
     });
 
     this.passwordForm = this.fb.group({
-      password: [''],
-      newpassword: [''],
-      confirmnewpassword: ['']
+      password: ['', Validators.required],
+      newpassword: ['', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/)
+      ]],
+      confirmnewpassword: ['', Validators.required]
     }, {
       validators: this.passwordMatchValidator
     });
@@ -87,6 +92,12 @@ export class PerfilformComponent implements OnInit, OnDestroy {
   }
 
   updatePassword() {
+    this.submitted = true;
+
+    if (this.passwordForm.invalid) {
+      return;
+    }
+
     this.userService.updatePassword(this.passwordForm.value).subscribe(
       (response) => {
         if (response.success) {

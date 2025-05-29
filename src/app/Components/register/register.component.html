@@ -11,12 +11,23 @@
 
         <label for="email">Email</label>
         <input id="email" type="email" formControlName="email" name="email" required>
-        <div *ngIf="email?.invalid && email?.touched" class="error">
+        <div *ngIf="(email?.invalid && email?.touched)" class="error">
             El correo electrónico no es válido.
         </div>
 
         <label for="password">Password</label>
         <input id="password" type="password" formControlName="password" name="password" required>
+        <div *ngIf="(password?.invalid && (password?.touched || password?.dirty)) || submitted">
+            <small class="text-danger" *ngIf="password?.errors?.['required']">
+                La contraseña es obligatoria.
+            </small>
+            <small class="text-danger" *ngIf="password?.errors?.['minlength']">
+                La contraseña debe tener al menos 8 caracteres.
+            </small>
+            <small class="text-danger" *ngIf="password?.errors?.['pattern']">
+                La contraseña debe incluir al menos una mayúscula, una minúscula y un número.
+            </small>
+        </div>
 
         <label for="confirmPassword">Confirm password</label>
         <input id="confirmPassword" type="password" formControlName="confirmPassword" name="confirmPassword" required>
